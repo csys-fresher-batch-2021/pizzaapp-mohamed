@@ -15,7 +15,7 @@ public class TestAddPizzaTypes {
 		public void TestAddpizzaTypes1() {
 			int pizzaId=101;
 			String pizzaName = "VEG PIZZA";
-			boolean isValid = AddPizzaTypes.addPizzaTypes(pizzaId,pizzaName);
+			boolean isValid = ProductService.addPizzaTypes(pizzaId,pizzaName);
 			assertTrue(isValid);
 			
 		}
@@ -29,7 +29,7 @@ public class TestAddPizzaTypes {
 		public void TestAddpizzaTypes2() {
 			int pizzaId=102;
 			String pizzaName = "CHICKEN PIZZA";
-			boolean isValid = AddPizzaTypes.addPizzaTypes(pizzaId,pizzaName);
+			boolean isValid = ProductService.addPizzaTypes(pizzaId,pizzaName);
 			assertTrue(isValid);
 			
 		}
@@ -42,7 +42,7 @@ public class TestAddPizzaTypes {
 		public void TestAddpizzaTypes3() {
 			int pizzaId=103;
 			String pizzaName = "PANNER PIZZA";
-			boolean isValid = AddPizzaTypes.addPizzaTypes(pizzaId,pizzaName);
+			boolean isValid = ProductService.addPizzaTypes(pizzaId,pizzaName);
 			assertTrue(isValid);
 			
 		}
