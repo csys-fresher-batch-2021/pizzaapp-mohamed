@@ -6,7 +6,7 @@
 
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -16,8 +16,9 @@
 	<main class="container-fluid">
 		<h3>List Pizza Types</h3>
 		<table class="table table-bordered">
+		<caption>list of products</caption>
 		<thead>
-		<tr><th>Sno</th><th>Pizza Name </th></tr>
+		<tr><th scope="col">Sno</th><th>Pizza Name </th></tr>
 		</thead>
 		<tbody>
 		<!--  Scriptlets ( Java Code ) -->
@@ -36,6 +37,8 @@
 		<%} %>
 		</tbody>
 		</table>
+		
+		
 
 
 </body>
