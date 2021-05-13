@@ -27,16 +27,13 @@ public class AddProductServlet extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 
-		
-
-		// Step 1: Get Form Values
 		String productName = request.getParameter("productName");
 		out.println(productName);
 
-		// Step 2: Call Service => add Product
-		boolean isAdded = ProductService.addProduct(productName);
+		String price = request.getParameter("price");
 
-		// Step 3: Decide to which page we should redirect ?
+		boolean isAdded = ProductService.addProduct(productName, price);
+
 		if (isAdded) {
 			response.sendRedirect("ListProducts.jsp");
 		} else {
