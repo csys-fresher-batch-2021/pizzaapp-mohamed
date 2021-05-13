@@ -12,7 +12,7 @@ import in.sikkandar.model.Product;
 
 public class ProductService {
 	
-	public static final String types = "^[a-zA-Z][a-zA-Z0-9_]{6,19}$";
+	public static final String regularexpression = "^[a-zA-Z][a-zA-Z0-9_]{6,19}$";
 	private ProductService() {
 		//private constructor to avoid object creation
 	}
@@ -38,7 +38,7 @@ public class ProductService {
 	}
 	public static boolean addProduct(String productName) {
 		
-		if (productName.matches(ProductService.types)) {
+		if (productName.matches(ProductService.regularexpression)) {
 			System.out.println("Successfully added " + productName);
 			int id = products.size() + 1; //11
 			products.add(new Product(id, productName));

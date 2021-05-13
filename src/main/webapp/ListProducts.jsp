@@ -18,7 +18,7 @@
 		<table class="table table-bordered">
 		<caption>list of products</caption>
 		<thead>
-		<tr><th scope="col">Sno</th><th>Pizza Name </th></tr>
+		<tr><th scope="col">Sno</th><th scope="col">Pizza Name </th></tr>
 		</thead>
 		<tbody>
 		<!--  Scriptlets ( Java Code ) -->
