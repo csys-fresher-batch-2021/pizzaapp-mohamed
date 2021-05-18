@@ -13,7 +13,7 @@ public class ProductService {
 		// private constructor to avoid object creation
 	}
 
-	public static final ArrayList<Product> products = new ArrayList<>();
+	public static final List<Product> products = new ArrayList<>();
 
 	static {
 

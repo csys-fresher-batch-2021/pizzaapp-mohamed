@@ -22,10 +22,6 @@ public class Product {
 
 	}
 
-	public Integer getid() {
-		return id;
-	}
-
 	public String getName() {
 		return name;
 	}
