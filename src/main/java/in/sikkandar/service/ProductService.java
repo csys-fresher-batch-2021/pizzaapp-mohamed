@@ -47,5 +47,21 @@ public class ProductService {
 		return true;
 
 	}
-
+	
+	public static boolean deleteProduct(String productName) {
+		//TODO: Implement the logic
+		boolean isDeleted = false;
+		Product searchProduct = null;
+		for(Product product: products) {
+			if(product.getName().equalsIgnoreCase(productName)) {
+				searchProduct = product;
+				break;
+			}
+		}
+		if(searchProduct != null) {
+			products.remove(searchProduct);
+			isDeleted = true;
+		}
+		return isDeleted;
+	}
 }
