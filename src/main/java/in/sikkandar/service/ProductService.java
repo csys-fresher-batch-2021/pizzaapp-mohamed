@@ -49,7 +49,7 @@ public class ProductService {
 	}
 	
 	public static boolean deleteProduct(String productName) {
-		//TODO: Implement the logic
+		
 		boolean isDeleted = false;
 		Product searchProduct = null;
 		for(Product product: products) {
