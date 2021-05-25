@@ -14,7 +14,7 @@
 			<label>Product Name</label> <input type="text"
 				name="productName" placeholder="Enter PizzaName" required autofocus /><br />
 			<label>Product Id</label> <input type="number"
-				name="id" placeholder="Enter Id" required autofocus /> <br />
+				name="productId" placeholder="Enter Id" required autofocus /> <br />
 			<button class="btn btn-primary">Delete</button>
 		<button class="btn btn-danger" type="reset">Reset</button>
 		</form>
