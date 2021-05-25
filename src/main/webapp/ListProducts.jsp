@@ -22,7 +22,6 @@
 					<th scope="col">ID</th>
 					<th scope="col">Pizza Name</th>
 					<th scope="col">Price</th>
-					<th scope="col">Options</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -39,9 +38,7 @@
 					<td><%=i%></td>
 					<td><%=product.getName()%></td>
 					<td><%=product.getprice()%></td>
-					<td><a
-						href="DeleteProductServlet?productName=<%=product.getName()%>"
-						class="btn btn-danger">Delete</a>
+
 				</tr>
 				<%
 				}

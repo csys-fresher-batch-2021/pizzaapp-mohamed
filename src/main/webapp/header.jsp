@@ -18,6 +18,9 @@ String role = (String) session.getAttribute("ROLE");
       <li class="nav-item active">
         <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="ListProducts.jsp">List Of products <span class="sr-only">(current)</span></a>
+      </li>
       
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -29,11 +32,11 @@ String role = (String) session.getAttribute("ROLE");
     </ul>
      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="login.jsp">Login</a>
+        <a class="nav-link" href="Adminlogin.jsp"> Admin Login</a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="UserRegistration.jsp">Register</a>
+        <a class="nav-link" href="UserLogin.jsp">User Login</a>
       </li>
       </ul>
    

@@ -36,15 +36,16 @@ public class DeleteProductServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		String productName = request.getParameter("productName");
+		String productId = request.getParameter("productId");
 		out.println(productName);
 
-		boolean isDeleted = ProductService.deleteProduct(productName);
+		boolean isDeleted = ProductService.deleteProduct(productName,productId);
 
 		if (isDeleted) {
 			response.sendRedirect("ListProducts.jsp");
 		} else {
-			String errorMessage = "Unable to add Product Name";
-			response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);
+			String errorMessage = "Unable to delete Product Name";
+			response.sendRedirect("DeleteProduct.jsp?errorMessage=" + errorMessage);
 		}
 
 	}

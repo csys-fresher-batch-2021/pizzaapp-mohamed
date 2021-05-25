@@ -48,7 +48,7 @@ public class ProductService {
 
 	}
 	
-	public static boolean deleteProduct(String productName) {
+	public static boolean deleteProduct(String productName,String productId) {
 		
 		boolean isDeleted = false;
 		Product searchProduct = null;
