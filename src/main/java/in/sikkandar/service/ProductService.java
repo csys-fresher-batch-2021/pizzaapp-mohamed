@@ -48,12 +48,15 @@ public class ProductService {
 
 	}
 	
+	
+	
+	@SuppressWarnings("unlikely-arg-type")
 	public static boolean deleteProduct(String productName,String productId) {
 		
 		boolean isDeleted = false;
 		Product searchProduct = null;
 		for(Product product: products) {
-			if(product.getName().equalsIgnoreCase(productName)) {
+			if(product.getName().equalsIgnoreCase(productName) || product.getId().equals(productId)) {
 				searchProduct = product;
 				break;
 			}
