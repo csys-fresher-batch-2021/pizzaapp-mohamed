@@ -9,9 +9,11 @@
 		<form action="AddProductServlet">
 			<h3>ADD PRODUCT</h3>
 			<label>Product Name</label> <input type="text"
-				name="productName" placeholder="Enter PizzaName" required autofocus /><br />
-			<label>Price</label> <input type="number"
+				name="name" placeholder="Enter PizzaName" required autofocus /><br />
+			<label>Product Price</label> <input type="number"
 				name="price" placeholder="Enter price" required autofocus /> <br />
+				<label>product ID</label> <input type="number"
+				name="id" placeholder="Enter Id" required autofocus /> <br />
 			<button class="btn btn-primary">Add</button>
 		<button class="btn btn-danger" type="reset">Reset</button>
 		</form>

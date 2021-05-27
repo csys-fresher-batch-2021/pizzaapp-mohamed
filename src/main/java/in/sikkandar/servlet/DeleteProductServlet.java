@@ -1,8 +1,6 @@
 package in.sikkandar.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +21,7 @@ public class DeleteProductServlet extends HttpServlet {
 	 */
 	public DeleteProductServlet() {
 		super();
-		
+
 	}
 
 	/**
@@ -33,13 +31,11 @@ public class DeleteProductServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
 
 		String productName = request.getParameter("productName");
 		String productId = request.getParameter("productId");
-		out.println(productName);
 
-		boolean isDeleted = ProductService.deleteProduct(productName,productId);
+		boolean isDeleted = ProductService.deleteProduct(productName, productId);
 
 		if (isDeleted) {
 			response.sendRedirect("ListProducts.jsp");
@@ -57,7 +53,7 @@ public class DeleteProductServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		doGet(request, response);
 	}
 

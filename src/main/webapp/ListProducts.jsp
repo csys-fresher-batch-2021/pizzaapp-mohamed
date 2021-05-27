@@ -19,6 +19,7 @@
 			<caption>Available PizzaTypes</caption>
 			<thead>
 				<tr>
+					
 					<th scope="col">ID</th>
 					<th scope="col">Pizza Name</th>
 					<th scope="col">Price</th>
@@ -35,7 +36,8 @@
 					i++;
 				%>
 				<tr>
-					<td><%=i%></td>
+					
+					<td><%=product.getId()%></td>
 					<td><%=product.getName()%></td>
 					<td><%=product.getprice()%></td>
 

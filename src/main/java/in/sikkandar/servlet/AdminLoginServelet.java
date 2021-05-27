@@ -35,7 +35,7 @@ public class AdminLoginServelet extends HttpServlet {
 		if(isValid) {
 			HttpSession session = request.getSession();
 			session.setAttribute("LOGGED_IN_USER", username);
-			session.setAttribute("ROLE", "ADMIN");
+			
 			response.sendRedirect("ModifyProducts.jsp");
 		}
 		else {
