@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.sikkandar.model.Product;
+import in.sikkandar.validator.AddProductsValidator;
 
 public class ProductService {
 
@@ -18,9 +19,9 @@ public class ProductService {
 	static {
 
 		// List of products in the list
-		products.add(new Product(1, "VegPizza", "150"));
-		products.add(new Product(2, "MushroomPizza", "200"));
-		products.add(new Product(3, "PannerPizza", "250"));
+		products.add(new Product("101", "VegPizza", "150"));
+		products.add(new Product("102", "MushroomPizza", "200"));
+		products.add(new Product("103", "PannerPizza", "250"));
 
 	}
 
@@ -34,31 +35,34 @@ public class ProductService {
 		return products;
 	}
 
-	public static boolean addProduct(String productName, String price) {
+	public static boolean addProduct(String productName, String productPrice, String productId) {
 
-		if (productName.matches(ProductService.regularexpression)) {
+		boolean isAdded = false;
 
-			int id = products.size() + 1; // 11
-			products.add(new Product(id, productName, price));
+		if (!AddProductsValidator.isValidProductName(productName)
+				&& AddProductsValidator.isValidProductPrice(productPrice)
+				&& AddProductsValidator.isValidProductId(productId)) {
 
-		} else {
-			return false;
+			Product product = new Product(productId, productName, productPrice);
+			products.add(product);
+
+			isAdded = true;
 		}
-		return true;
+		return isAdded;
 
 	}
-	
-	public static boolean deleteProduct(String productName) {
-		
+
+	public static boolean deleteProduct(String productName, String productId) {
+
 		boolean isDeleted = false;
 		Product searchProduct = null;
-		for(Product product: products) {
-			if(product.getName().equalsIgnoreCase(productName)) {
+		for (Product product : products) {
+			if (product.getName().equals(productName) && product.getId().equals(productId)) {
 				searchProduct = product;
 				break;
 			}
 		}
-		if(searchProduct != null) {
+		if (searchProduct != null) {
 			products.remove(searchProduct);
 			isDeleted = true;
 		}

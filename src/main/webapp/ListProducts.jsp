@@ -19,10 +19,10 @@
 			<caption>Available PizzaTypes</caption>
 			<thead>
 				<tr>
+					
 					<th scope="col">ID</th>
 					<th scope="col">Pizza Name</th>
 					<th scope="col">Price</th>
-					<th scope="col">Options</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -36,12 +36,11 @@
 					i++;
 				%>
 				<tr>
-					<td><%=i%></td>
+					
+					<td><%=product.getId()%></td>
 					<td><%=product.getName()%></td>
 					<td><%=product.getprice()%></td>
-					<td><a
-						href="DeleteProductServlet?productName=<%=product.getName()%>"
-						class="btn btn-danger">Delete</a>
+
 				</tr>
 				<%
 				}

@@ -1,11 +1,11 @@
 package in.sikkandar.model;
 
 public class Product {
-	private Integer id;
+	private String id;
 	private String name;
 	private String price;
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -14,7 +14,7 @@ public class Product {
 		return "Product [id=" + id + ", name=" + name + ",price=" + price + "]";
 	}
 
-	public Product(Integer id, String name, String price) {
+	public Product(String id, String name, String price) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -22,6 +22,7 @@ public class Product {
 
 	}
 
+	
 	public String getName() {
 		return name;
 	}
