@@ -1,7 +1,5 @@
 package in.sikkandar.validator;
 
-
-
 public class AddProductsValidator {
 	private AddProductsValidator() {
 		// default constructor
@@ -9,8 +7,12 @@ public class AddProductsValidator {
 
 	public static boolean isValidProductName(String productName) {
 		boolean isValid = false;
-		if (productName.trim().isEmpty()) {
-			isValid = true;
+		for (int i = 0; i < productName.length(); i++) {
+			char ch = productName.charAt(i);
+			if (!(ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <= 'Z')) {
+
+				isValid = true;
+			}
 		}
 		return isValid;
 	}
