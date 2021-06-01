@@ -11,7 +11,7 @@ import in.sikkandar.util.ConnectionUtil;
 
 public class UserDao {
 	
-	private static final   List<User> userReg = new ArrayList<User>();
+	private static final List<User> userReg = new ArrayList<>();
 
 	public void addUser(User regObj) {
 
