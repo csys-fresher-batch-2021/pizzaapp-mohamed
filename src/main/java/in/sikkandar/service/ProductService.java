@@ -8,17 +8,14 @@ import in.sikkandar.validator.AddProductsValidator;
 
 public class ProductService {
 
-	public static final String regularexpression = "^[a-zA-Z][a-zA-Z0-9_]{6,19}$";
-
 	private ProductService() {
-		// private constructor to avoid object creation
+
 	}
 
 	private static final List<Product> products = new ArrayList<>();
 
 	static {
 
-		// List of products in the list
 		products.add(new Product("101", "VegPizza", "150"));
 		products.add(new Product("102", "MushroomPizza", "200"));
 		products.add(new Product("103", "PannerPizza", "250"));
