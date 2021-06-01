@@ -26,19 +26,15 @@ public class UserDao {
 
 	public static void register1(String name, String email, String mobileNumber, String address, String password,
 			String confrimPassword) {
-		System.out.println(name+email+mobileNumber+address+password+confrimPassword);
-		
 
 		Connection connection = null;
 		PreparedStatement pst = null;
-		// step 1:
+
 		try {
 			connection = ConnectionUtil.getConnection();
 
-			// step 2:
-
 			String sql = "insert into register4(name,email,mobileNum,address,password,confrimPassword) values(?,?,?,?,?,?)";
-			
+
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, name);
 			pst.setString(2, email);
@@ -48,13 +44,12 @@ public class UserDao {
 			pst.setString(6, confrimPassword);
 			System.out.println(pst);
 			pst.executeUpdate();
-			
 
 		} catch (ClassNotFoundException | SQLException e) {
 
 			e.printStackTrace();
 		} finally {
-			ConnectionUtil.close(connection,pst);
+			ConnectionUtil.close(connection, pst);
 
 		}
 

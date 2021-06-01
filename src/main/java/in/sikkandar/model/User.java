@@ -7,7 +7,6 @@ public class User {
 	private String address;
 	private String password;
 	private String confrimPassword;
-	
 
 	public String getPassword() {
 		return password;
@@ -63,9 +62,8 @@ public class User {
 				+ password + ", confrimPassword=" + confrimPassword + "]";
 	}
 
-	
-	public User(String name, String email, String mobile, String address, String password,String confirmPassword) {
-			
+	public User(String name, String email, String mobile, String address, String password, String confirmPassword) {
+
 		super();
 		this.name = name;
 		this.password = password;
@@ -75,6 +73,5 @@ public class User {
 		this.password = password;
 		this.password = confirmPassword;
 	}
-		
-	
+
 }

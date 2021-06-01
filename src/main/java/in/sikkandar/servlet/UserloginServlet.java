@@ -15,33 +15,34 @@ import in.sikkandar.service.UserService;
 @WebServlet("/UserloginServlet")
 public class UserloginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserloginServlet() {
-        super();
-       
-    }
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-    @Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public UserloginServlet() {
+		super();
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String userName = request.getParameter("username");
 		String userPassCode = request.getParameter("password");
 		UserService user = new UserService();
-		boolean isValidUser = user.checkUser(userName,userPassCode);
-		if(isValidUser) {
+		boolean isValidUser = user.checkUser(userName, userPassCode);
+		if (isValidUser) {
 			response.sendRedirect("ListProducts.jsp");
-			
-		}
-		else {
+
+		} else {
 			String errorMessage = "Name or Password is Wrong";
-			response.sendRedirect("UserLogin.jsp?errorMessage="+errorMessage);
+			response.sendRedirect("UserLogin.jsp?errorMessage=" + errorMessage);
 		}
-	
+
 	}
 
 }

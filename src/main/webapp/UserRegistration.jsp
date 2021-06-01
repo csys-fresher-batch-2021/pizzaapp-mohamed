@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>User Registration</title>
@@ -12,6 +12,7 @@
 		<form action="UserRegistrationServlet" method="post">
 			<h3>USER REGISTRATION</h3>
 			<table>
+			<Caption>USER REGISTRATION</Caption>
 				<tr>
 					<th scope="col">NAME</th>
 					<td><input type="text" name="userName"

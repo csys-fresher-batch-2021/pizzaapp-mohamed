@@ -20,13 +20,14 @@ public class UserRegistrationServlet extends HttpServlet {
 	 */
 	public UserRegistrationServlet() {
 		super();
-		
+
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -34,14 +35,13 @@ public class UserRegistrationServlet extends HttpServlet {
 			String username = request.getParameter("userName");
 			String email = request.getParameter("email");
 			String mobileNumber = request.getParameter("mobile");
-			//long userMobileNum = Long.parseLong(mobileNumber);
 			String address = request.getParameter("address");
 			String password = request.getParameter("pass");
-			String ConfrimPassword = request.getParameter("reenterPass");
+			String confrimPassword = request.getParameter("reenterPass");
 
 			UserService service = new UserService();
 
-			boolean isAdded = service.addDetails(username, email, mobileNumber, address, password, ConfrimPassword);
+			boolean isAdded = service.addDetails(username, email, mobileNumber, address, password, confrimPassword);
 			if (isAdded) {
 				response.sendRedirect("UserLogin.jsp");
 

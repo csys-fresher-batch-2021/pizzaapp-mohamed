@@ -8,16 +8,14 @@ import in.sikkandar.validator.AddProductsValidator;
 
 public class ProductService {
 
-	
 	private ProductService() {
-		
+
 	}
 
 	private static final List<Product> products = new ArrayList<>();
 
 	static {
 
-		// List of products in the list
 		products.add(new Product("101", "VegPizza", "150"));
 		products.add(new Product("102", "MushroomPizza", "200"));
 		products.add(new Product("103", "PannerPizza", "250"));

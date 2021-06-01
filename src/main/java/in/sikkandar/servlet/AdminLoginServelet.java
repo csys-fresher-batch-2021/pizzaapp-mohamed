@@ -14,36 +14,35 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/AdminLoginServlet")
 public class AdminLoginServelet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @return 
-     * @see HttpServlet#HttpServlet()
-     */
-    public AdminLoginServelet() {
-        super();
-        
-        
-    }
+
+	/**
+	 * @return
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public AdminLoginServelet() {
+		super();
+
+	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		String username = request.getParameter("userName");
 		String password = request.getParameter("passWord");
-		//Step 2: call Service
+		// Step 2: call Service
 		boolean isValid = "admin".equals(username) && "admin".equals(password);
-		if(isValid) {
+		if (isValid) {
 			HttpSession session = request.getSession();
 			session.setAttribute("LOGGED_IN_USER", username);
-			
+
 			response.sendRedirect("ModifyProducts.jsp");
-		}
-		else {
+		} else {
 			String errorMessage = "Name or Password is Wrong";
-			response.sendRedirect("login.jsp?errorMessage="+errorMessage);
-			
+			response.sendRedirect("login.jsp?errorMessage=" + errorMessage);
+
 		}
-		
+
 	}
 
 }
