@@ -1,4 +1,4 @@
-package in.sikkandar.DAO;
+package in.sikkandar.dao;
 
 import java.util.List;
 import java.sql.Connection;
