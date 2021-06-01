@@ -42,7 +42,7 @@ public class UserDao {
 			pst.setString(4, address);
 			pst.setString(5, password);
 			pst.setString(6, confrimPassword);
-			System.out.println(pst);
+			
 			pst.executeUpdate();
 
 		} catch (ClassNotFoundException | SQLException e) {

@@ -11,6 +11,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<form action="AdminLoginServlet" method="post">
+		<h3>ADMIN LOGIN</h3>
 			<table>
 				<caption>ADMIN LOGIN</caption>
 				<tr>
