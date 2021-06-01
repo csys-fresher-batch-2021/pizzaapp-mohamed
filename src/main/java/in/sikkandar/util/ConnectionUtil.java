@@ -17,11 +17,11 @@ public class ConnectionUtil {
 		String driverClass = "org.postgresql.Driver";
 		String url = "jdbc:postgresql://localhost:5432/Register_db";
 		String username = "postgres";
-		String userpassword = "pass123";
+		String userpasscode = "pass123";
 
 		Class.forName(driverClass);
 
-		connection = DriverManager.getConnection(url, username, userpassword);
+		connection = DriverManager.getConnection(url, username, userpasscode);
 
 		return connection;
 	}
