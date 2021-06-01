@@ -66,7 +66,6 @@ public class User {
 
 		super();
 		this.name = name;
-		this.password = password;
 		this.email = email;
 		this.mobile = mobile;
 		this.address = address;

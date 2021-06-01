@@ -31,7 +31,7 @@ public class UserService {
 
 		} else {
 
-			registerd = false;
+			return registerd;
 		}
 		return registerd;
 	}
