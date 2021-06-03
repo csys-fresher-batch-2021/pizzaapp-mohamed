@@ -26,7 +26,6 @@ public class OrderSheetService {
 				price = add.getPrice();
 				double totalAmount = price * Quantity;
 				double gstAmount = (totalAmount * gst) + totalAmount;
-				System.out.println(gstAmount);
 				LocalTime time = LocalTime.now();
 				LocalTime deliveryTime = time.plusMinutes(30);
 				LocalDate date = LocalDate.now();
