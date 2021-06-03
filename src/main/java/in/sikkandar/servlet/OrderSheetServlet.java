@@ -34,10 +34,9 @@ public class OrderSheetServlet extends HttpServlet {
 		String quantity1 = request.getParameter("quantity");
 		int Quantity=Integer.parseInt(quantity1);
 		
-		double gst=0.07;
+		
 		boolean isAdded = OrderSheetService.orderList(pizzaType1,Quantity);
-		OrderSheetService.gstCalculation(pizzaType1,gst);
-
+		
 		if (isAdded) {
 			response.sendRedirect("Bill.jsp");
 			

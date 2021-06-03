@@ -40,12 +40,7 @@
 						for (Order order : orders) {
 							i++;
 				%>
-				<%
-				List<Gst> orders1 = OrderSheetService.getOrders1();
-						int i1 = 0;
-						for (Gst order1 : orders1) {
-							i1++;
-				%>
+				
 				<tr>
 					<td><%=order.getDate()%></td>
 					<td><%=order.getTime()%></td>
@@ -53,16 +48,14 @@
 					<td><%=order.getQuantity()%></td>
 					<td><%=order.getPrice()%></td>
 					<td><%=order.getTotalAmount()%></td>
-					<td><%=order1.getGstCalculation()%></td>
+					<td><%=order.getGstAmount()%></td>
 					<td><%=order.getDeliveryTime()%></td>
 
 				</tr>
 				<%
 				}
 				%>
-				<%
-				}
-				%>
+				
 				
 			</tbody>
 		</table>

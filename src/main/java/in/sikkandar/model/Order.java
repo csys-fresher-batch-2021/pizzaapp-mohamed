@@ -5,11 +5,12 @@ import java.time.LocalTime;
 public class Order {
 	private String pizzaName;
 	private Integer Quantity;
-	private double price;
-	private double totalAmount ;
+	private Double price;
+	private Double totalAmount ;
 	private LocalDate date;
 	private LocalTime time;
 	private LocalTime deliveryTime;
+	private Double gstAmount;
 	
 
 	public String getPizzaName() {
@@ -59,8 +60,8 @@ public class Order {
 		return "Order [pizzaName=" + pizzaName + ", Quantity=" + Quantity + ", price=" + price + ", totalAmount="
 				+ totalAmount + ", date=" + date + ", time=" + time + ", deliveryTime=" + deliveryTime + "]";
 	}
-	public Order(String pizzaName, Integer quantity, double price, double totalAmount, LocalDate date, LocalTime time,
-			LocalTime deliveryTime) {
+	public Order(String pizzaName, Integer quantity, Double price, Double totalAmount, LocalDate date, LocalTime time,
+			LocalTime deliveryTime,Double gstAmount) {
 		super();
 		this.pizzaName = pizzaName;
 		this.Quantity = quantity;
@@ -69,7 +70,14 @@ public class Order {
 		this.date = date;
 		this.time = time;
 		this.deliveryTime = deliveryTime;
+		this.gstAmount= gstAmount;
 	}
+	public Double getGstAmount() {
+		return gstAmount;
+	}
+	public void setGstAmount(Double gstAmount) {
+		this.gstAmount = gstAmount;
+	}	
 }
 
 
