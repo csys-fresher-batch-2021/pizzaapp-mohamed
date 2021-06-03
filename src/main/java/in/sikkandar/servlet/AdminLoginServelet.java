@@ -39,7 +39,7 @@ public class AdminLoginServelet extends HttpServlet {
 			response.sendRedirect("ModifyProducts.jsp");
 		} else {
 			String errorMessage = "Name or Password is Wrong";
-			response.sendRedirect("login.jsp?errorMessage=" + errorMessage);
+			response.sendRedirect("Adminlogin.jsp?errorMessage=" + errorMessage);
 
 		}
 

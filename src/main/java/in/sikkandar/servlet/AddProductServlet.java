@@ -22,12 +22,15 @@ public class AddProductServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		String productId = request.getParameter("id");
+		int productId1 = Integer.parseInt(productId);
 		String productName = request.getParameter("name");
 		String productPrice = request.getParameter("price");
-		String productId = request.getParameter("id");
+		Float productprice1=Float.parseFloat(productPrice);
+		
 
-		boolean isAdded = ProductService.addProduct(productName, productPrice, productId);
+		boolean isAdded = ProductService.addProduct( productId1,productName, productprice1);
 
 		if (isAdded) {
 			response.sendRedirect("ListProducts.jsp");

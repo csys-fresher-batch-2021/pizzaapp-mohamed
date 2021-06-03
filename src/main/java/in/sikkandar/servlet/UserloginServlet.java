@@ -36,7 +36,7 @@ public class UserloginServlet extends HttpServlet {
 		UserService user = new UserService();
 		boolean isValidUser = user.checkUser(userName, userPassCode);
 		if (isValidUser) {
-			response.sendRedirect("ListProducts.jsp");
+			response.sendRedirect("Order.jsp");
 
 		} else {
 			String errorMessage = "Name or Password is Wrong";

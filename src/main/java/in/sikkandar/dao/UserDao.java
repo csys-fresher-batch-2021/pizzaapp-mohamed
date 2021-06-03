@@ -24,7 +24,7 @@ public class UserDao {
 		return userReg;
 	}
 
-	public static void register1(String name, String email, String mobileNumber, String address, String password,
+	public static void register1(String name, String email, long mobileNumber, String address, String password,
 			String confrimPassword) {
 
 		Connection connection = null;
@@ -33,12 +33,12 @@ public class UserDao {
 		try {
 			connection = ConnectionUtil.getConnection();
 
-			String sql = "insert into register4(name,email,mobileNum,address,password,confrimPassword) values(?,?,?,?,?,?)";
+			String sql = "insert into register5(name,email,mobileNum,address,password,confrimPassword) values(?,?,?,?,?,?)";
 
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, name);
 			pst.setString(2, email);
-			pst.setString(3, mobileNumber);
+			pst.setLong(3, mobileNumber);
 			pst.setString(4, address);
 			pst.setString(5, password);
 			pst.setString(6, confrimPassword);
@@ -54,5 +54,6 @@ public class UserDao {
 		}
 
 	}
+
 
 }

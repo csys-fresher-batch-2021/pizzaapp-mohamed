@@ -3,7 +3,7 @@ package in.sikkandar.model;
 public class User {
 	private String name;
 	private String email;
-	private String mobile;
+	private long mobile;
 	private String address;
 	private String password;
 	private String confrimPassword;
@@ -40,11 +40,11 @@ public class User {
 		this.email = email;
 	}
 
-	public String getMobile() {
+	public long getMobile() {
 		return mobile;
 	}
 
-	public void setMobile(String mobile) {
+	public void setMobile(long mobile) {
 		this.mobile = mobile;
 	}
 
@@ -62,7 +62,7 @@ public class User {
 				+ password + ", confrimPassword=" + confrimPassword + "]";
 	}
 
-	public User(String name, String email, String mobile, String address, String password, String confirmPassword) {
+	public User(String name, String email, long mobile, String address, String password, String confirmPassword) {
 
 		super();
 		this.name = name;
