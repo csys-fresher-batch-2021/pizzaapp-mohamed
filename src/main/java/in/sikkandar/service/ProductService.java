@@ -22,8 +22,7 @@ public class ProductService {
 		products.add(product2);
 		Product product3=new Product(103, "PannerPizza", 250f);
 		products.add(product3);
-		//products.add(new Product(102, "MushroomPizza", 200f));
-	//products.add(new Product(103, "PannerPizza", 250f));
+		
 
 	}
 

@@ -22,20 +22,13 @@ public class OrderSheetServlet extends HttpServlet {
      */
     public OrderSheetServlet() {
         super();
-        // TODO Auto-generated constructor stub
+       
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pizzaType1 = request.getParameter("pizzaType");
 		String quantity1 = request.getParameter("quantity");
@@ -43,7 +36,7 @@ public class OrderSheetServlet extends HttpServlet {
 		
 		double gst=0.07;
 		boolean isAdded = OrderSheetService.orderList(pizzaType1,Quantity);
-		boolean gstCalculation=OrderSheetService.gstCalculation(pizzaType1,gst);
+		OrderSheetService.gstCalculation(pizzaType1,gst);
 
 		if (isAdded) {
 			response.sendRedirect("Bill.jsp");
