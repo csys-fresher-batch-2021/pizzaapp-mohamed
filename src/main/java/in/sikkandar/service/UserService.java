@@ -9,14 +9,14 @@ import in.sikkandar.validator.UserValidator;
 public class UserService {
 	UserDao userObj = new UserDao();
 
-	public boolean addDetails(String name, String email, String mobileNumber, String address, String password,
+	public boolean addDetails(String name, String email, long mobileNo, String address, String password,
 			String confrimPassword) {
 		boolean registerd = false;
 
-		User regObj = new User(name, email, mobileNumber, address, password, confrimPassword);
+		User regObj = new User(name, email, mobileNo, address, password, confrimPassword);
 		boolean nameValid = UserValidator.isNameValid(name);
 		boolean emailValid = UserValidator.isEmailValid(email);
-		boolean mobileValid = UserValidator.isMobileNumberValid(mobileNumber);
+		boolean mobileValid = UserValidator.isMobileNumberValid(mobileNo);
 		boolean addressValid = UserValidator.isAddressValid(address);
 		boolean passwordValid = UserValidator.isPasswordValid(password);
 
@@ -24,7 +24,7 @@ public class UserService {
 
 			if (password.equals(confrimPassword)) {
 				userObj.addUser(regObj);
-				UserDao.register1(name, email, mobileNumber, address, password, confrimPassword);
+				UserDao.register1(name, email, mobileNo, address, password, confrimPassword);
 				registerd = true;
 
 			}

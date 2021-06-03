@@ -53,8 +53,8 @@ public class UserValidator {
 	 * @param mobileNumber
 	 * @return
 	 */
-	public static boolean isMobileNumberValid(String mobileNumber) {
-		String number = String.valueOf(mobileNumber);
+	public static boolean isMobileNumberValid(long mobileNo) {
+		String number = String.valueOf(mobileNo);
 		boolean valid = false;
 		if (number.length() == 10) {
 			valid = true;

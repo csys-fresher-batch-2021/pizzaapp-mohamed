@@ -39,7 +39,7 @@
 					
 					<td><%=product.getId()%></td>
 					<td><%=product.getName()%></td>
-					<td><%=product.getprice()%></td>
+					<td><%=product.getPrice()%></td>
 
 				</tr>
 				<%

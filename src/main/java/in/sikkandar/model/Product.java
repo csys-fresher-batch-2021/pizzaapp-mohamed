@@ -1,33 +1,44 @@
 package in.sikkandar.model;
 
 public class Product {
-	private String id;
+	private Integer id;
 	private String name;
-	private String price;
+	private Float price;
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	@Override
-	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ",price=" + price + "]";
-	}
-
-	public Product(String id, String name, String price) {
+	public Product(Integer id, String name, Float price) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
+	}
 
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public String getprice() {
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Float getPrice() {
 		return price;
+	}
+
+	public void setPrice(Float price) {
+		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ",price=" + price + "]";
 	}
 
 }

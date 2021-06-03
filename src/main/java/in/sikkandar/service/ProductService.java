@@ -8,17 +8,22 @@ import in.sikkandar.validator.AddProductsValidator;
 
 public class ProductService {
 
-	private ProductService() {
+	ProductService() {
 
 	}
 
 	private static final List<Product> products = new ArrayList<>();
 
 	static {
-
-		products.add(new Product("101", "VegPizza", "150"));
-		products.add(new Product("102", "MushroomPizza", "200"));
-		products.add(new Product("103", "PannerPizza", "250"));
+		
+		Product product1=new Product(101, "VegPizza", 150f);
+		products.add(product1);
+		Product product2=new Product(102, "MushroomPizza", 200f);
+		products.add(product2);
+		Product product3=new Product(103, "PannerPizza", 250f);
+		products.add(product3);
+		//products.add(new Product(102, "MushroomPizza", 200f));
+	//products.add(new Product(103, "PannerPizza", 250f));
 
 	}
 
@@ -32,15 +37,15 @@ public class ProductService {
 		return products;
 	}
 
-	public static boolean addProduct(String productName, String productPrice, String productId) {
+	public static boolean addProduct(int productId1,String productName,float productprice1) {
 
 		boolean isAdded = false;
 
 		if (!AddProductsValidator.isValidProductName(productName)
-				&& AddProductsValidator.isValidProductPrice(productPrice)
-				&& AddProductsValidator.isValidProductId(productId)) {
+				&& AddProductsValidator.isValidProductPrice(productprice1)
+				&& AddProductsValidator.isValidProductId(productId1)) {
 
-			Product product = new Product(productId, productName, productPrice);
+			Product product = new Product(productId1, productName, productprice1);
 			products.add(product);
 
 			isAdded = true;
@@ -49,12 +54,12 @@ public class ProductService {
 
 	}
 
-	public static boolean deleteProduct(String productName, String productId) {
+	public static boolean deleteProduct(int productId1,String productName) {
 
 		boolean isDeleted = false;
 		Product searchProduct = null;
 		for (Product product : products) {
-			if (product.getName().equals(productName) && product.getId().equals(productId)) {
+			if (product.getName().equals(productName) && product.getId().equals(productId1)) {
 				searchProduct = product;
 				break;
 			}

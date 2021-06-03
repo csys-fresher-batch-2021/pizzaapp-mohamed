@@ -17,19 +17,17 @@ public class AddProductsValidator {
 		return isValid;
 	}
 
-	public static boolean isValidProductPrice(String productPrice) {
-		int productPrice1 = Integer.parseInt(productPrice);
+	public static boolean isValidProductPrice(float productPrice) {
 		boolean isValid = false;
-		if (productPrice1 > 100) {
+		if (productPrice > 100) {
 			isValid = true;
 		}
 		return isValid;
 	}
 
-	public static boolean isValidProductId(String productId) {
-		int productId1 = Integer.parseInt(productId);
+	public static boolean isValidProductId(int productId) {
 		boolean isValid = false;
-		if (productId1 > 100) {
+		if (productId > 100) {
 			isValid = true;
 		}
 		return isValid;

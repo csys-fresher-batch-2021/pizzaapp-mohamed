@@ -31,11 +31,12 @@ public class DeleteProductServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String productName = request.getParameter("productName");
+		
 		String productId = request.getParameter("productId");
+		int productId1=Integer.parseInt(productId);
+		String productName = request.getParameter("productName");
 
-		boolean isDeleted = ProductService.deleteProduct(productName, productId);
+		boolean isDeleted = ProductService.deleteProduct(productId1, productName);
 
 		if (isDeleted) {
 			response.sendRedirect("ListProducts.jsp");
