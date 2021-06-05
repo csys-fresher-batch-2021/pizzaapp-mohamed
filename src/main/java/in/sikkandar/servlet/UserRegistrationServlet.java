@@ -44,12 +44,14 @@ public class UserRegistrationServlet extends HttpServlet {
 
 			boolean isAdded = service.addDetails(username, email, mobileNo, address, password, confrimPassword);
 			if (isAdded) {
-				response.sendRedirect("UserLogin.jsp");
+
+				String infoMessage = "Registered successfully ";
+				response.sendRedirect("UserRegistration.jsp?infoMessage=" + infoMessage);
 
 			}
 		} catch (Exception e) {
 			String errorMessage = "Invalid user details ";
-			response.sendRedirect("userRegistration.jsp?errorMessage=" + errorMessage);
+			response.sendRedirect("UserRegistration.jsp?errorMessage=" + errorMessage);
 		}
 
 	}
