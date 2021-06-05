@@ -9,7 +9,7 @@ CREATE TABLE userregister3(
     confirmpassword varchar(20) NOT NULL
 );
 
-select *from userregister3;
+select * from userregister3;
 
 insert into userregister3(name,email,mobilenumber,address,password,confirmpassword)
 values('sikkandar','sikkandar@gmail.com',9698612143,'trichy','Sikkandar@123','Sikkandar@123');
