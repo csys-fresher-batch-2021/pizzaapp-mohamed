@@ -15,24 +15,23 @@ public class OrderSheetService {
 
 	private static final List<Order> orders = new ArrayList<>();
 
-	public static boolean orderList(String pizzaType1, int Quantity) {
+	public static boolean orderList(String pizzaType1, int quantity) {
 		boolean isAdd = false;
 		double price = 0;
 		double gst=0.07;
 		for (Product add : ProductService.getProducts()) {
 
-			if (add.getName().equalsIgnoreCase(pizzaType1) && OrederSheetValidation.isValidProductQuantity(Quantity)) {
+			if (add.getName().equalsIgnoreCase(pizzaType1) && OrederSheetValidation.isValidProductQuantity(quantity)) {
 
 				price = add.getPrice();
-				double totalAmount = price * Quantity;
+				double totalAmount = price * quantity;
 				double gstAmount = (totalAmount * gst) + totalAmount;
-				LocalTime time = LocalTime.now();
-				LocalTime deliveryTime = time.plusMinutes(30);
+				LocalTime orderTime = LocalTime.now();
+				LocalTime deliveryTime = orderTime.plusMinutes(30);
 				LocalDate date = LocalDate.now();
-				Order order = new Order(pizzaType1, Quantity, price, totalAmount, date, time, deliveryTime,gstAmount);
+				Order order = new Order(pizzaType1, quantity, price, totalAmount, date, orderTime, deliveryTime,gstAmount);
 				orders.add(order);
-				//OrderDao orderDao=new OrderDao(pizzaType1, Quantity, price, totalAmount, date, time, deliveryTime,gstAmount);
-				//OrderDao.register2(pizzaType1, Quantity, price, totalAmount, Date, time, deliveryTime,gstAmount);
+				
 				isAdd = true;
 				break;
 			}

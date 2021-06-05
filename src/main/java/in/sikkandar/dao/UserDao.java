@@ -25,7 +25,7 @@ public class UserDao {
 	}
 
 	public static void register1(String name, String email, long mobileNumber, String address, String password,
-			String confrimPassword) {
+			String confirmPassword) {
 
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -33,7 +33,7 @@ public class UserDao {
 		try {
 			connection = ConnectionUtil.getConnection();
 
-			String sql = "insert into register5(name,email,mobileNum,address,password,confrimPassword) values(?,?,?,?,?,?)";
+			String sql = "insert into userregister3(name,email,mobilenumber,address,password,confirmpassword) values(?,?,?,?,?,?)";
 
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, name);
@@ -41,7 +41,7 @@ public class UserDao {
 			pst.setLong(3, mobileNumber);
 			pst.setString(4, address);
 			pst.setString(5, password);
-			pst.setString(6, confrimPassword);
+			pst.setString(6, confirmPassword);
 			
 			pst.executeUpdate();
 
