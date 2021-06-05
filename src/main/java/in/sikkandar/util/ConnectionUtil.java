@@ -15,8 +15,6 @@ public class ConnectionUtil {
 	private static final String DATABASE_NAME = System.getenv("spring.datasource.url");
 	private static final String USERNAME = System.getenv("spring.datasource.username");
 	private static final String PASSWORD =System.getenv( "spring.datasource.password");
-	//private static final String HOST="localhost";
-	//private static final int PORT =5432;
 	private static final String DB_URL= DATABASE_NAME;
 	
 
