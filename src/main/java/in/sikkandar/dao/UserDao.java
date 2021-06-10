@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import in.sikkandar.exception.DBException;
 import in.sikkandar.model.User;
 import in.sikkandar.util.ConnectionUtil;
 
@@ -20,7 +21,7 @@ public class UserDao {
 
 	//}
 
-	public static List<User> getUser() {
+	public static List<User> getUser() throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet result = null;
@@ -51,7 +52,7 @@ public class UserDao {
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-			throw new  RuntimeException("Unable to fetch User");
+			throw new  DBException("Unable to fetch User");
 		}
 		 finally {
 				ConnectionUtil.close(connection, pst);
@@ -60,7 +61,7 @@ public class UserDao {
 		return userReg;
 	}
 
-	public static void register1(User user) {
+	public static void register1(User user) throws DBException {
 
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -82,7 +83,7 @@ public class UserDao {
 
 		} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
-				throw new RuntimeException("Unable to Add User");
+				throw new DBException("Unable to Add User");
 		} finally {
 			ConnectionUtil.close(connection, pst);
 

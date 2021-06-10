@@ -5,12 +5,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import in.sikkandar.exception.DBException;
 import in.sikkandar.model.Product;
 import in.sikkandar.util.ConnectionUtil;
 
 public class ProductDao {
 
-	public static void addProduct(Product product) {
+	public static void addProduct(Product product) throws DBException{
 
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -30,7 +32,7 @@ public class ProductDao {
 
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("Unable to Add Product");
+			throw new DBException("Unable to Add Product");
 		} finally {
 			ConnectionUtil.close(connection, pst);
 
@@ -65,7 +67,7 @@ public class ProductDao {
 		}
 	
 
-	public static List<Product> getProduct() {
+	public static List<Product> getProduct() throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet result = null;
@@ -94,7 +96,7 @@ public class ProductDao {
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-			throw new  RuntimeException("Unable to fetch User");
+			throw new  DBException("Unable to fetch User");
 		}
 		 finally {
 				ConnectionUtil.close(connection, pst);

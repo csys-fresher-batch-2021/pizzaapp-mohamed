@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.sikkandar.dao.ProductDao;
+import in.sikkandar.exception.ServiceException;
 import in.sikkandar.model.Product;
 import in.sikkandar.validator.AddProductsValidator;
 import in.sikkandar.validator.ExistsProductValidator;
@@ -37,7 +38,7 @@ public class ProductService {
 		return products;
 	}
 
-	public static void addProduct(int productId1, String productName, Float productprice1) {
+	public static void addProduct(int productId1, String productName, Float productprice1)  throws ServiceException{
 
 		try {
 			AddProductsValidator.isValidProductName(productName);
@@ -50,7 +51,7 @@ public class ProductService {
 			ProductDao.addProduct(product);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new RuntimeException(e.getMessage());
+			throw new ServiceException(e.getMessage());
 		}
 
 	}
