@@ -16,6 +16,10 @@ public class Product {
 		this.price = price;
 	}
 
+	public Product() {
+		
+	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}

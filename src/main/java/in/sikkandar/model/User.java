@@ -1,6 +1,10 @@
 package in.sikkandar.model;
 
 public class User {
+	public User() {
+		
+	}
+
 	private String name;
 	private String email;
 	private long mobile;

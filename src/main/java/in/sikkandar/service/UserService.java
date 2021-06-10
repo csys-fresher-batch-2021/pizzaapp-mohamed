@@ -1,31 +1,29 @@
 package in.sikkandar.service;
 
+import java.sql.SQLException;
 import java.util.List;
-
 
 import in.sikkandar.dao.UserDao;
 import in.sikkandar.model.User;
 import in.sikkandar.validator.UserValidator;
 
 public class UserService {
-	UserDao userObj = new UserDao();
+	//UserDao userObj = new UserDao();
 
-	public boolean addDetails(String name, String email, long mobileNo, String address, String password,
-			String confrimPassword) {
+	public boolean addDetails(User user) {
 		boolean registerd = false;
 
-		User regObj = new User(name, email, mobileNo, address, password, confrimPassword);
-		boolean nameValid = UserValidator.isNameValid(name);
-		boolean emailValid = UserValidator.isEmailValid(email);
-		boolean mobileValid = UserValidator.isMobileNumberValid(mobileNo);
-		boolean addressValid = UserValidator.isAddressValid(address);
-		boolean passwordValid = UserValidator.isPasswordValid(password);
+		boolean nameValid = UserValidator.isNameValid(user.getName());
+		boolean emailValid = UserValidator.isEmailValid(user.getEmail());
+		boolean mobileValid = UserValidator.isMobileNumberValid(user.getMobile());
+		boolean addressValid = UserValidator.isAddressValid(user.getAddress());
+		boolean passwordValid = UserValidator.isPasswordValid(user.getPassword());
 
 		if (nameValid && mobileValid && emailValid && addressValid && passwordValid) {
 
-			if (password.equals(confrimPassword)) {
-				userObj.addUser(regObj);
-				UserDao.register1(name, email, mobileNo, address, password, confrimPassword);
+			if (user.getPassword().equals(user.getConfrimPassword())) {
+				// userObj.addUser(regObj);
+				UserDao.register1(user);
 				registerd = true;
 
 			}
@@ -43,17 +41,23 @@ public class UserService {
 	 * @param userName
 	 * @param userPassCode
 	 * @return
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
 	 */
-	public boolean checkUser(String userName, String userPassword) {
+	public boolean checkUser(String userName, String userPassword) throws ClassNotFoundException, SQLException {
 		boolean isValidUser = false;
 		List<User> users = UserDao.getUser();
 		for (User userDetails : users) {
 			if (userDetails.getName().equals(userName) && userDetails.getPassword().equals(userPassword)) {
 				isValidUser = true;
+				break;
 
 			}
 		}
 		return isValidUser;
 	}
+	
+	
+	
 
-}
+	}

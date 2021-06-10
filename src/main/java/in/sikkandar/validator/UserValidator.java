@@ -1,5 +1,6 @@
 package in.sikkandar.validator;
 
+
 public class UserValidator {
 	private UserValidator() {
 		

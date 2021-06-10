@@ -1,36 +1,32 @@
 package in.sikkandar.validator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class AddProductsValidator {
 	private AddProductsValidator() {
 		// default constructor
 	}
 
-	public static boolean isValidProductName(String productName) {
-		boolean isValid = false;
-		for (int i = 0; i < productName.length(); i++) {
-			char ch = productName.charAt(i);
-			if (!(ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <= 'Z')) {
-
-				isValid = true;
-			}
+	public static void isValidProductName(String productName) {
+		String condition = "[a-zA-Z\\s*]+";
+		Pattern pattern = Pattern.compile(condition);
+		Matcher matcher = pattern.matcher(productName);
+		if (!matcher.matches()) {
+			throw new RuntimeException("InValid ProductName");
 		}
-		return isValid;
 	}
 
-	public static boolean isValidProductPrice(float productPrice) {
-		boolean isValid = false;
-		if (productPrice > 100) {
-			isValid = true;
+	public static void isValidProductPrice(float productPrice) {
+		if (productPrice < 100) {
+			throw new RuntimeException("Price should be more than 100");
 		}
-		return isValid;
 	}
 
-	public static boolean isValidProductId(int productId) {
-		boolean isValid = false;
-		if (productId > 100) {
-			isValid = true;
+	public static void isValidProductId(int productId) {
+		if (productId < 100) {
+			throw new RuntimeException("ProductId must be more than 100 ");
 		}
-		return isValid;
 	}
 
 }

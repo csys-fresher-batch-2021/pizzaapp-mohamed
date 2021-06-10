@@ -41,7 +41,7 @@ public class OrderSheetServlet extends HttpServlet {
 			response.sendRedirect("Bill.jsp");
 			
 		} else {
-			String errorMessage = "Unable to add Product Name";
+			String errorMessage = "This Product not available";
 			response.sendRedirect("Order.jsp?errorMessage=" + errorMessage);
 		}
 

@@ -3,6 +3,7 @@
 <%@page import="in.sikkandar.service.*"%>
 <%@page import="java.util.List"%>
 <%@page import="in.sikkandar.model.Product"%>
+<%@page import="in.sikkandar.dao.ProductDao"%>
 
 
 <!DOCTYPE html>
@@ -14,6 +15,11 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
+	<%String infoMessage = request.getParameter("infoMessage");
+	if (infoMessage != null) {
+		out.println("<font color='green'>" + infoMessage + "</font>");
+	}
+	%>
 		<h3>List Pizza Types</h3>
 		<table class="table table-bordered">
 			<caption>Available PizzaTypes</caption>
@@ -30,7 +36,8 @@
 				<!--  %= Expression - variable value -->
 				<!--  Dynamic  -->
 				<%
-				List<Product> products = ProductService.getProducts();
+				List<Product> products = ProductDao.getProduct();
+				//List<Product> products = ProductService.getProducts();
 				int i = 0;
 				for (Product product : products) {
 					i++;
@@ -50,3 +57,4 @@
 	</main>
 </body>
 </html>
+		

@@ -6,7 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import in.sikkandar.model.User;
 import in.sikkandar.service.UserService;
+import in.sikkandar.validator.ExistsUserValidator;
+
 
 /**
  * Servlet implementation class RegistrationServlet
@@ -34,15 +37,25 @@ public class UserRegistrationServlet extends HttpServlet {
 		try {
 			String username = request.getParameter("userName");
 			String email = request.getParameter("email");
-			String mobileNumber = request.getParameter("mobile");
-			long mobileNo = Long.parseLong(mobileNumber);
+			long mobileNo = Long.parseLong(request.getParameter("mobile"));
 			String address = request.getParameter("address");
 			String password = request.getParameter("pass");
 			String confrimPassword = request.getParameter("reenterPass");
-
+			
+			User user = new User();
+			
+			user.setName(username);
+			user.setEmail(email);
+			user.setMobile(mobileNo);
+			user.setAddress(address);
+			user.setPassword(password);
+			user.setConfrimPassword(confrimPassword);
+			
 			UserService service = new UserService();
+			ExistsUserValidator.existsUser(email, mobileNo);
 
-			boolean isAdded = service.addDetails(username, email, mobileNo, address, password, confrimPassword);
+			boolean isAdded = service.addDetails(user);
+			
 			if (isAdded) {
 
 				String infoMessage = "Registered successfully ";
@@ -50,7 +63,7 @@ public class UserRegistrationServlet extends HttpServlet {
 
 			}
 		} catch (Exception e) {
-			String errorMessage = "Invalid user details ";
+			String errorMessage =e.getMessage();
 			response.sendRedirect("UserRegistration.jsp?errorMessage=" + errorMessage);
 		}
 
