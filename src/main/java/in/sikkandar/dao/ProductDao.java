@@ -63,6 +63,7 @@ public class ProductDao {
 
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
+			throw new DBException("Unable to delete Product");
 		} finally {
 
 			ConnectionUtil.close(connection, pst);
