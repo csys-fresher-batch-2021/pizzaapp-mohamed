@@ -1,8 +1,5 @@
 package in.sikkandar.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import in.sikkandar.dao.ProductDao;
 import in.sikkandar.exception.ServiceException;
 import in.sikkandar.model.Product;
@@ -15,40 +12,16 @@ public class ProductService {
 
 	}
 
-	private static final List<Product> products = new ArrayList<>();
-
-	/**static {
-
-		Product product1 = new Product(1,101, "VegPizza", 150f);
-		products.add(product1);
-		Product product2 = new Product(2,102, "MushroomPizza", 200f);
-		products.add(product2);
-		Product product3 = new Product(3,103, "PannerPizza", 250f);
-		products.add(product3);
-
-	}**/
-
-	/**
-	 * method to display the products available
-	 * 
-	 * @return
-	 * 
-	 */
-	public static List<Product> getProducts() {
-		return products;
-	}
-
-	public static void addProduct(int productId1, String productName, Float productprice1)  throws ServiceException{
+	public static void addProduct(int productId1, String productName, Float productprice1) throws ServiceException {
 
 		try {
 			AddProductsValidator.isValidProductName(productName);
 			AddProductsValidator.isValidProductPrice(productprice1);
 			AddProductsValidator.isValidProductId(productId1);
-			
-			
+
 			ExistsProductValidator.existsProduct(productId1, productName);
 			Product product = new Product(productId1, productName, productprice1);
-			//products.add(product);
+
 			ProductDao.addProduct(product);
 		} catch (Exception e) {
 			e.printStackTrace();
