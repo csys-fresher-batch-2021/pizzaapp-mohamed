@@ -39,23 +39,12 @@ public class DeleteProductServlet extends HttpServlet {
 		boolean isDeleted = ProductService.deleteProduct(productId1, productName);
 
 		if (isDeleted) {
-			response.sendRedirect("ListProducts.jsp");
+			String infoMessage = "Successfully deleted";
+			response.sendRedirect("ListProducts.jsp?infoMessage=" + infoMessage);
 		} else {
 			String errorMessage = "Unable to delete Product Name";
 			response.sendRedirect("DeleteProduct.jsp?errorMessage=" + errorMessage);
 		}
 
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		doGet(request, response);
-	}
-
 }

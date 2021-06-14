@@ -12,14 +12,13 @@ import in.sikkandar.model.User;
 import in.sikkandar.util.ConnectionUtil;
 
 public class UserDao {
+	
+	private UserDao() {
+		
+	}
 
 	private static final List<User> userReg = new ArrayList<>();
 
-	//public void addUser(User regObj) {
-
-		//userReg.add(regObj);
-
-	//}
 
 	public static List<User> getUser() throws DBException {
 		Connection connection = null;

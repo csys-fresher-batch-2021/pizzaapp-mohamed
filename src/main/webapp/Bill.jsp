@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@page import="in.sikkandar.service.*"%>
+	pageEncoding="ISO-8859-1"%>
+<%@page import="in.sikkandar.service.*"%>
 <%@page import="java.util.List"%>
 <%@page import="in.sikkandar.model.Order"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.time.LocalTime"%>
 
 
 <!DOCTYPE html>
@@ -12,7 +16,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>BILL GENRATION</h3>
 		<table class="table table-bordered">
@@ -26,8 +30,8 @@
 					<th scope="col">Price</th>
 					<th scope="col">TotalPrice</th>
 					<th scope="col">TotalAmount+GST Amount</th>
-					<th scope="col">DeliveryDate</th>
-					
+					<th scope="col">DeliveryTime</th>
+
 				</tr>
 			</thead>
 			<tbody>
@@ -36,27 +40,30 @@
 				<!--  Dynamic  -->
 				<%
 				List<Order> orders = OrderSheetService.getOrders();
-						int i = 0;
-						for (Order order : orders) {
-							i++;
+				int i = 0;
+				for (Order order : orders) {
+					i++;
+					String orderedDate = order.getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+					String orderedTime = order.getTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+					String deliveryTime = order.getDeliveryTime().format(DateTimeFormatter.ofPattern("HH:mm"));
 				%>
-				
+
 				<tr>
-					<td><%=order.getDate()%></td>
-					<td><%=order.getTime()%></td>
+					<td><%=orderedDate%></td>
+					<td><%=orderedTime%></td>
 					<td><%=order.getPizzaName()%></td>
 					<td><%=order.getQuantity()%></td>
 					<td><%=order.getPrice()%></td>
 					<td><%=order.getTotalAmount()%></td>
 					<td><%=order.getGstAmount()%></td>
-					<td><%=order.getDeliveryTime()%></td>
+					<td><%=deliveryTime%></td>
 
 				</tr>
 				<%
 				}
 				%>
-				
-				
+
+
 			</tbody>
 		</table>
 	</main>

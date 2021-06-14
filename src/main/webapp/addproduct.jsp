@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,15 +8,9 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-		<%
-		String errorMessage = request.getParameter("errorMessage");
-
-		if (errorMessage != null) {
-			out.println("<font color='red'>" + errorMessage + "</font>");
-		}
-		%>
 		<form action="AddProductServlet">
 			<h3>ADD PRODUCT</h3>
+			<p><jsp:include page="Message.jsp"></jsp:include></p>
 			<label>product ID</label> <input type="number" name="id"
 				placeholder="Enter Id" required autofocus /> <br /> <label>Product
 				Name</label> <input type="text" name="name" placeholder="Enter PizzaName"

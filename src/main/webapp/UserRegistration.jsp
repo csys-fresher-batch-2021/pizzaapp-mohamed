@@ -9,20 +9,9 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-	<%
-		String errorMessage = request.getParameter("errorMessage");
-		
-		if (errorMessage != null) {
-			out.println("<font color='red'>" + errorMessage + "</font>");
-		}
-		
-		String infoMessage = request.getParameter("infoMessage");
-		if (infoMessage != null) {
-			out.println("<font color='green'>" + infoMessage + "</font>");
-		}
-		%>
 		<form action="UserRegistrationServlet" method="post">
 			<h3>USER REGISTRATION</h3>
+			<p><jsp:include page="Message.jsp"></jsp:include></p>
 			<table>
 			<Caption>USER REGISTRATION</Caption>
 				<tr>

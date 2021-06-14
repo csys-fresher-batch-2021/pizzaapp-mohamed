@@ -9,19 +9,20 @@ public class Product {
 		return id;
 	}
 
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public Product(Integer id, String name, Float price) {
 		super();
+
 		this.id = id;
 		this.name = name;
 		this.price = price;
 	}
 
 	public Product() {
-		
-	}
 
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -42,7 +43,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ",price=" + price + "]";
+		return "Product [ id=" + id + ", name=" + name + ",price=" + price + "]";
 	}
 
 }

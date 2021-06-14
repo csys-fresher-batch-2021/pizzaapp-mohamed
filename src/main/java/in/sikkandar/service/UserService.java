@@ -8,7 +8,6 @@ import in.sikkandar.model.User;
 import in.sikkandar.validator.UserValidator;
 
 public class UserService {
-	//UserDao userObj = new UserDao();
 
 	public boolean addDetails(User user) {
 		boolean registerd = false;
@@ -22,7 +21,7 @@ public class UserService {
 		if (nameValid && mobileValid && emailValid && addressValid && passwordValid) {
 
 			if (user.getPassword().equals(user.getConfrimPassword())) {
-				// userObj.addUser(regObj);
+
 				UserDao.register1(user);
 				registerd = true;
 
@@ -44,7 +43,7 @@ public class UserService {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public boolean checkUser(String userName, String userPassword) throws ClassNotFoundException, SQLException {
+	public boolean checkUser(String userName, String userPassword) {
 		boolean isValidUser = false;
 		List<User> users = UserDao.getUser();
 		for (User userDetails : users) {
@@ -56,8 +55,5 @@ public class UserService {
 		}
 		return isValidUser;
 	}
-	
-	
-	
 
-	}
+}

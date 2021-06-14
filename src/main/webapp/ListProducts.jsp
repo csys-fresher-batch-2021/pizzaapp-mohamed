@@ -15,17 +15,13 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-	<%String infoMessage = request.getParameter("infoMessage");
-	if (infoMessage != null) {
-		out.println("<font color='green'>" + infoMessage + "</font>");
-	}
-	%>
 		<h3>List Pizza Types</h3>
+		<p><jsp:include page="Message.jsp"></jsp:include></p>
 		<table class="table table-bordered">
 			<caption>Available PizzaTypes</caption>
 			<thead>
 				<tr>
-					
+					<th scope="col">S.No</th>
 					<th scope="col">ID</th>
 					<th scope="col">Pizza Name</th>
 					<th scope="col">Price</th>
@@ -43,7 +39,7 @@
 					i++;
 				%>
 				<tr>
-					
+					<td><%=i%></td>
 					<td><%=product.getId()%></td>
 					<td><%=product.getName()%></td>
 					<td><%=product.getPrice()%></td>

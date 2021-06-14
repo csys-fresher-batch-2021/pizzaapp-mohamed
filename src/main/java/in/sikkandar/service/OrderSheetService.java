@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import in.sikkandar.dao.ProductDao;
 import in.sikkandar.model.Order;
 import in.sikkandar.model.Product;
 import in.sikkandar.validator.OrederSheetValidation;
@@ -19,7 +21,7 @@ public class OrderSheetService {
 		boolean isAdd = false;
 		double price = 0;
 		double gst=0.07;
-		for (Product add : ProductService.getProducts()) {
+		for (Product add : ProductDao.getProduct()) {
 
 			if (add.getName().equalsIgnoreCase(pizzaType1) && OrederSheetValidation.isValidProductQuantity(quantity)) {
 

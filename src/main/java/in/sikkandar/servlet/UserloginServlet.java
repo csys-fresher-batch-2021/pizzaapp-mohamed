@@ -1,8 +1,6 @@
 package in.sikkandar.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,7 +41,7 @@ public class UserloginServlet extends HttpServlet {
 				response.sendRedirect("Order.jsp");
 
 			} 
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			String errorMessage = "Name or Password is Wrong";
 			response.sendRedirect("UserLogin.jsp?errorMessage=" + errorMessage);

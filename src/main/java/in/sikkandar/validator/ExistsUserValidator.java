@@ -7,6 +7,9 @@ import in.sikkandar.exception.ValidationException;
 import in.sikkandar.model.User;
 
 public class ExistsUserValidator {
+	private ExistsUserValidator() {
+		
+	}
 	public static void existsUser(String email, long mobilenumber) throws ValidationException{
 		List<User> users = UserDao.getUser();
 		try {
@@ -17,7 +20,7 @@ public class ExistsUserValidator {
 				if (userDetails.getMobile() == mobilenumber) {
 					throw new ValidationException("Mobile Number already Exists");
 				}
-				break;
+				
 
 			}
 		} catch (Exception e) {

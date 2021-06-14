@@ -1,4 +1,5 @@
 package in.sikkandar.dao;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,8 +12,11 @@ import in.sikkandar.model.Product;
 import in.sikkandar.util.ConnectionUtil;
 
 public class ProductDao {
+	private ProductDao() {
 
-	public static void addProduct(Product product) throws DBException{
+	}
+
+	public static void addProduct(Product product) throws DBException {
 
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -40,32 +44,31 @@ public class ProductDao {
 
 	}
 
-	public static void deleteProduct(int productId,String productName ) {
-		
-			Connection connection = null;
-			PreparedStatement pst = null;
-			try {
-				// Get Connection
-				connection = ConnectionUtil.getConnection();
-				// prepare data
-				String sql = "DELETE FROM addproduct WHERE productId= ? and productName= ? ;";
+	public static void deleteProduct(int productId, String productName) {
 
-				// Execute Query
-				pst = connection.prepareStatement(sql);
-				
-				pst.setInt(1,productId);
-				pst.setString(2, productName);
-				pst.executeUpdate();
+		Connection connection = null;
+		PreparedStatement pst = null;
+		try {
+			// Get Connection
+			connection = ConnectionUtil.getConnection();
+			// prepare data
+			String sql = "DELETE FROM addproduct WHERE productId= ? and productName= ? ;";
 
-			} catch (ClassNotFoundException | SQLException e)  {
-				e.printStackTrace();
-			} finally {
+			// Execute Query
+			pst = connection.prepareStatement(sql);
 
-				ConnectionUtil.close(connection, pst);
-			}
-			
+			pst.setInt(1, productId);
+			pst.setString(2, productName);
+			pst.executeUpdate();
+
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+
+			ConnectionUtil.close(connection, pst);
 		}
-	
+
+	}
 
 	public static List<Product> getProduct() throws DBException {
 		Connection connection = null;
@@ -83,28 +86,23 @@ public class ProductDao {
 
 				int productId = result.getInt("productId");
 				String productName = result.getString("productName");
-				float productPrice=result.getFloat("productPrice");
-				
-				
+				float productPrice = result.getFloat("productPrice");
 
 				product.setId(productId);
 				product.setName(productName);
 				product.setPrice(productPrice);
-				
+
 				products.add(product);
 			}
-			
+
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-			throw new  DBException("Unable to fetch User");
-		}
-		 finally {
-				ConnectionUtil.close(connection, pst);
+			throw new DBException("Unable to Show List");
+		} finally {
+			ConnectionUtil.close(connection, pst);
 
-			}
+		}
 		return products;
 	}
 
-		
-	}
-
+}

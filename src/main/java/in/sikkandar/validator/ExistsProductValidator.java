@@ -9,6 +9,9 @@ import in.sikkandar.model.Product;
 
 
 public class ExistsProductValidator {
+	private ExistsProductValidator(){
+		
+	}
 
 		public static void existsProduct(int productId1, String productName) throws ValidationException {
 			List<Product> product = ProductDao.getProduct();

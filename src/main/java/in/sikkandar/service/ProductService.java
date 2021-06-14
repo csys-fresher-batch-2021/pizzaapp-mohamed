@@ -17,16 +17,16 @@ public class ProductService {
 
 	private static final List<Product> products = new ArrayList<>();
 
-	static {
+	/**static {
 
-		Product product1 = new Product(101, "VegPizza", 150f);
+		Product product1 = new Product(1,101, "VegPizza", 150f);
 		products.add(product1);
-		Product product2 = new Product(102, "MushroomPizza", 200f);
+		Product product2 = new Product(2,102, "MushroomPizza", 200f);
 		products.add(product2);
-		Product product3 = new Product(103, "PannerPizza", 250f);
+		Product product3 = new Product(3,103, "PannerPizza", 250f);
 		products.add(product3);
 
-	}
+	}**/
 
 	/**
 	 * method to display the products available
@@ -44,10 +44,11 @@ public class ProductService {
 			AddProductsValidator.isValidProductName(productName);
 			AddProductsValidator.isValidProductPrice(productprice1);
 			AddProductsValidator.isValidProductId(productId1);
-
+			
+			
 			ExistsProductValidator.existsProduct(productId1, productName);
 			Product product = new Product(productId1, productName, productprice1);
-			products.add(product);
+			//products.add(product);
 			ProductDao.addProduct(product);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -60,7 +61,7 @@ public class ProductService {
 
 		boolean isDeleted = false;
 		Product searchProduct = null;
-		for (Product product : products) {
+		for (Product product : ProductDao.getProduct()) {
 			if (product.getName().equals(productName) && product.getId().equals(productId)) {
 				ProductDao.deleteProduct(productId, productName);
 				searchProduct = product;
@@ -68,7 +69,7 @@ public class ProductService {
 			}
 		}
 		if (searchProduct != null) {
-			products.remove(searchProduct);
+			ProductDao.getProduct().remove(searchProduct);
 			isDeleted = true;
 		}
 		return isDeleted;
