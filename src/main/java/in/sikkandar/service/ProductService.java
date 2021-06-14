@@ -30,21 +30,26 @@ public class ProductService {
 
 	}
 
-	public static boolean deleteProduct(int productId, String productName) {
+	public static void deleteProduct(int productId, String productName) {
 
-		boolean isDeleted = false;
-		Product searchProduct = null;
-		for (Product product : ProductDao.getProduct()) {
-			if (product.getName().equals(productName) && product.getId().equals(productId)) {
-				ProductDao.deleteProduct(productId, productName);
-				searchProduct = product;
-				break;
+		try {
+
+			Product searchProduct = null;
+			for (Product product : ProductDao.getProduct()) {
+				if (product.getName().equals(productName) && product.getId().equals(productId)) {
+					ProductDao.deleteProduct(productId, productName);
+					searchProduct = product;
+					break;
+				}
 			}
+			if (searchProduct != null) {
+				ProductDao.getProduct().remove(searchProduct);
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ServiceException(e.getMessage());
 		}
-		if (searchProduct != null) {
-			ProductDao.getProduct().remove(searchProduct);
-			isDeleted = true;
-		}
-		return isDeleted;
+		
 	}
 }
