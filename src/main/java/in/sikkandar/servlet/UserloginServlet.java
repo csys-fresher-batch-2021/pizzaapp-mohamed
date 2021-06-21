@@ -41,7 +41,6 @@ public class UserloginServlet extends HttpServlet {
 			
 				HttpSession session = request.getSession();
 				session.setAttribute("LOGGED_IN_USER", userName);
-				/* session.setAttribute("ROLE", "ADMIN"); */
 				response.sendRedirect("Order.jsp");
 
 			

@@ -65,9 +65,6 @@
 					<th scope="col">GST Amount</th>
 					<th scope="col">TotalPrice</th>
 					<th scope="col">DeliveryTime</th>
-
-					<!-- <th scope="col">DeliveryTime</th> -->
-
 				</tr>
 			</thead>
 			<tbody>

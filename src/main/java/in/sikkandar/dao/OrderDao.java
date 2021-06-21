@@ -17,6 +17,9 @@ import in.sikkandar.model.User;
 import in.sikkandar.util.ConnectionUtil;
 
 public class OrderDao {
+	private OrderDao(){
+		
+	}
 
 	public static void addOrder(Order orders) {
 

@@ -27,10 +27,7 @@ public class OrderSheetService {
 					double gstAmount = amount * gst;
 					double totalAmount = gstAmount + amount;
 					LocalTime deliveryTime = LocalTime.now().plusMinutes(30);
-					/*
-					 * LocalTime orderTime = LocalTime.now(); LocalTime deliveryTime =
-					 * orderTime.plusMinutes(30); LocalDate date = LocalDate.now();
-					 */
+
 					order.setPizzaName(pizzaType1);
 					order.setQuantity(quantity);
 					order.setPrice(price);
@@ -38,7 +35,6 @@ public class OrderSheetService {
 					order.setTotalAmount(totalAmount);
 					order.setDeliveryTime(deliveryTime);
 
-					//OrderDao.addOrder(pizzaType1, quantity, price, totalAmount, date, orderTime, deliveryTime, gstAmount);
 					break;
 				}
 			} catch (Exception e) {

@@ -37,22 +37,10 @@ public class OrderSheetServlet extends HttpServlet {
 		String pizzaType1 = request.getParameter("pizzaType");
 		String quantity1 = request.getParameter("quantity");
 
-		/*
-		 * int userId=0; HttpSession session = request.getSession(); String username =
-		 * (String)session.getAttribute("LOGGED_IN_USER"); for(User user :
-		 * UserDao.getUser()) { if(user.getName().equals(username)) { userId =
-		 * user.getUserid(); } }
-		 */
 		try {
 			int Quantity = Integer.parseInt(quantity1);
 			Order order = OrderSheetService.orderList(pizzaType1, Quantity);
 			String deliveryTime = order.getDeliveryTime().format(DateTimeFormatter.ofPattern("HH:mm"));
-			System.out.println(deliveryTime);
-//			List<Order> orderList = new ArrayList<>();
-//			orderList.add(order);
-//			request.setAttribute("ORDER_LIST", orderList);
-//			RequestDispatcher requestDispatcher = request.getRequestDispatcher("Bill.jsp");
-//			requestDispatcher.forward(request, response);
 			response.sendRedirect("Bill.jsp?productName=" + order.getPizzaName() + "&quantity=" + order.getQuantity()
 					+ "&price=" + order.getPrice() + "&gstAmount=" + order.getGstAmount() + "&totalPrice="
 					+ order.getTotalAmount() + "&deliveryTime=" + deliveryTime);

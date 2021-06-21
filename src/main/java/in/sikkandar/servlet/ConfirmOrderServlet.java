@@ -35,6 +35,7 @@ public class ConfirmOrderServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -101,25 +102,5 @@ public class ConfirmOrderServlet extends HttpServlet {
 	}
 }
 }
-
-
-//		try {
-//			int userId = 0;
-//			HttpSession session = request.getSession();
-//			String username = (String) session.getAttribute("LOGGED_IN_USER");
-//			for (User user : UserDao.getUser()) {
-//				if (user.getName().equals(username)) {
-//					userId = user.getUserid();
-//				}
-//			}
-			
-//			System.out.println(productName+ quantity+price+ gstAmount+ totalAmount);
-//			OrderSheetService.confirmOrder(productName, quantity, price, gstAmount, totalAmount);
-//			response.sendRedirect("ConfirmOrder.jsp");
-//		} catch (ServiceException e) {
-//			String errorMessage = e.getMessage();
-//			response.sendRedirect("Bill.jsp?errorMessage=" + errorMessage);
-//		}
-//	}
 
 

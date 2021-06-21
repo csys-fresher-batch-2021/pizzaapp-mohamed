@@ -35,6 +35,8 @@ public class MyOrderServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -57,20 +59,6 @@ public class MyOrderServlet extends HttpServlet {
 			response.sendRedirect("MyOrder.jsp?errorMessage=" + errorMessage);
 		}
 	}
-
-		//Integer userid = 1;
-//		HttpSession session = request.getSession();
-//		String userName = (String) session.getAttribute("LOGGED_IN_USER");
-//		for (User user : UserDao.getUser()) {
-//			if (user.getName().equals(userName)) {
-//				userid = user.getUserid();
-//
-//			}
-//
-//		}
-	//	List<Order> userOrders = OrderDao.getUserOrders(userid);
-	//	System.out.println(userOrders);
-	}
-
+}
 
 
