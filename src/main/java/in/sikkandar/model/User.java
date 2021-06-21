@@ -4,7 +4,7 @@ public class User {
 	public User() {
 		
 	}
-
+	private Integer userid;
 	private String name;
 	private String email;
 	private long mobile;
@@ -60,21 +60,20 @@ public class User {
 		this.address = address;
 	}
 
+	public Integer getUserid() {
+		return userid;
+	}
+
+	public void setUserid(Integer userid) {
+		this.userid = userid;
+	}
+
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", email=" + email + ", mobile=" + mobile + ", address=" + address + ", password="
-				+ password + ", confrimPassword=" + confrimPassword + "]";
+		return "User [userid=" + userid + ", name=" + name + ", email=" + email + ", mobile=" + mobile + ", address="
+				+ address + ", password=" + password + ", confrimPassword=" + confrimPassword + "]";
 	}
 
-	public User(String name, String email, long mobile, String address, String password, String confirmPassword) {
-
-		super();
-		this.name = name;
-		this.email = email;
-		this.mobile = mobile;
-		this.address = address;
-		this.password = password;
-		this.password = confirmPassword;
-	}
+	
 
 }

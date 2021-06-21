@@ -4,6 +4,7 @@ public class Product {
 	private Integer id;
 	private String name;
 	private Float price;
+	
 
 	public Integer getId() {
 		return id;
@@ -43,7 +44,9 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [ id=" + id + ", name=" + name + ",price=" + price + "]";
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + "]";
 	}
+
+	
 
 }

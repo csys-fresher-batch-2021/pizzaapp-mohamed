@@ -17,13 +17,12 @@ public class UserDao {
 		
 	}
 
-	private static final List<User> userReg = new ArrayList<>();
-
-
+	
 	public static List<User> getUser() throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet result = null;
+		List<User> userReg = new ArrayList<>();
 		try {
 			connection = ConnectionUtil.getConnection();
 
@@ -32,7 +31,8 @@ public class UserDao {
 			result = pst.executeQuery();
 			while (result.next()) {
 				User user = new User();
-
+				
+				Integer userId=result.getInt("userid");
 				String name = result.getString("name");
 				String email = result.getString("email");
 				Long mobilenumber = result.getLong("mobilenumber");
@@ -40,6 +40,7 @@ public class UserDao {
 				String password = result.getString("password");
 				String confirmpassword = result.getString("confirmpassword");
 
+				user.setUserid(userId);
 				user.setName(name);
 				user.setEmail(email);
 				user.setMobile(mobilenumber);
@@ -83,6 +84,34 @@ public class UserDao {
 		} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 				throw new DBException("Unable to Add User");
+		} finally {
+			ConnectionUtil.close(connection, pst);
+
+		}
+
+	}
+	
+	public static int getUserId(String name) {
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet result = null;
+		try {
+			connection = ConnectionUtil.getConnection();
+
+			String sql = "select userId from userregister3 where name=?";
+			pst = connection.prepareStatement(sql);
+			pst.setString(1, name);
+
+			result = pst.executeQuery();
+			int userId = 0;
+			if (result.next()) {
+
+				userId = result.getInt("userId");
+			}
+			return userId;
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+			throw new DBException("Unable to show bill");
 		} finally {
 			ConnectionUtil.close(connection, pst);
 

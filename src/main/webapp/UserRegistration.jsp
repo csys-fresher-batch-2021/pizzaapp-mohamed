@@ -5,56 +5,98 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>User Registration</title>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-		<form action="UserRegistrationServlet" method="post">
-			<h3>USER REGISTRATION</h3>
-			<p><jsp:include page="Message.jsp"></jsp:include></p>
-			<table>
-			<Caption>USER REGISTRATION</Caption>
-				<tr>
-					<th scope="col">NAME</th>
-					<td><input type="text" name="userName"
-						placeholder="Enter user name" id="userId" required autofocus><br /></td>
-				</tr>
-				<tr>
-					<th scope="col">EMAIL</th>
-					<td><input type="email" name="email" placeholder="Enter Email"
-						id="emailId" required><br /></td>
-				</tr>
-				<tr>
-					<th scope="col">MOBILE NUMBER</th>
-					<td><input type="number" name="mobile"
-						placeholder="Enter mobile number" id="mobileId"
-						title="Phone number start with 6-9 and remaing 9 digit with 0-9"
-						required><br /></td>
-				<tr>
-					<th scope="col">ADDRESS</th>
-					<td><input type="text" name="address"
-						placeholder="Enter Address" id="addressId" required><br /></td>
-				</tr>
-				<tr>
-					<th scope="col">PASSWORD</th>
-					<td><input type="password" name="pass"
-						placeholder="Enter Password" id="passId"
-						pattern="(?=.*\d)(?=.*[a-z])(?=.*[@#$%^&+=])(?=.*[A-Z]).{8,}"
-						title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-						required><br /></td>
-				</tr>
-				<tr>
-					<th scope="col">RE-ENTER PASSWORD</th>
-					<td><input type="password" name="reenterPass"
-						placeholder="Re-Enter Password" id="passId"
-						title="Please Check Password & Reenter Password Is Same" required><br /></td>
-				</tr>
-			</table>
+		<div class="card bg-light">
+			<article class="card-body mx-auto" style="max-width: 400px;">
+				<h3 class="card-title mt-3 text-center">USER REGISTRATION</h3>
+				<p class="text-center"><jsp:include page="Message.jsp"></jsp:include></p>
+				<form action="UserRegistrationServlet" method="post">
 
-			<button class="btn btn-danger">Register</button>
-			<button class="btn btn-secondary" type="reset">Reset</button>
+					<label>NAME</label>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <em class="fa fa-user"
+								style="font-size: 24px"></em>
+							</span>
+						</div>
+						<input name="userName" class="form-control"
+							placeholder="Enter User Name" autocomplete="off" type="text"
+							required>
+					</div>
 
-		</form>
+					<label>EMAIL</label>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <em class="fa fa-envelope"
+								style="font-size: 24px"></em>
+							</span>
+						</div>
+						<input name="email" class="form-control"
+							placeholder="Enter Email" autocomplete="off" type="text"
+							required>
+					</div>
+
+					<label>MOBILE NUMBER</label>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <em class="fa fa-mobile"
+								style="font-size: 24px"></em>
+							</span>
+						</div>
+						<input name="mobile" class="form-control"
+							placeholder="Enter mobile number" autocomplete="off" type="number"
+							required>
+					</div>
+
+					<label>ADDRESS</label>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <em
+								class="fa fa-address-card" style="font-size: 24px"></em>
+							</span>
+						</div>
+						<input name="address" class="form-control"
+							placeholder="Enter address" autocomplete="off" type="text"
+							required>
+					</div>
+
+					<label>PASSWORD</label>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <em class="fa fa-key"
+								style="font-size: 24px"></em>
+							</span>
+						</div>
+						<input name="pass" class="form-control"
+							placeholder="Enter password" autocomplete="off" type="password"
+							required>
+					</div>
+
+					<label>RE-ENTER PASSWORD</label>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <em class="fa fa-key"
+								style="font-size: 24px"></em>
+							</span>
+						</div>
+						<input name="reenterPass" class="form-control"
+							placeholder="Enter reenter password" autocomplete="off" type="password"
+							required>
+					</div>
+
+					<div class="form-group">
+						<button class="btn btn-primary btn-block" type="submit">Register</button>
+						</br>
+						<button class="btn btn-danger btn-block" type="reset">Reset</button>
+					</div>
+				</form>
+			</article>
+		</div>
 	</main>
 </body>
 </html>

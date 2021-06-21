@@ -43,7 +43,7 @@
 }
 </style>
 <meta charset="ISO-8859-1">
-<title>BILL GENRATION</title>
+<title>Insert title here</title>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -54,13 +54,17 @@
 			<caption>DISPLAY BILL</caption>
 			<thead>
 				<tr>
+					<th scope="col">OrderId</th>
+					<th scope="col">UserName</th>
+					<th scope="col">ProductId</th>
+					<th scope="col">OrderDate</th>
+					<th scope="col">OrderTime</th> 
 					<th scope="col">PizzaName</th>
 					<th scope="col">Quantity</th>
 					<th scope="col">Price</th>
 					<th scope="col">GST Amount</th>
 					<th scope="col">TotalPrice</th>
 					<th scope="col">DeliveryTime</th>
-					<th scope="col">Option</th>
 
 					<!-- <th scope="col">DeliveryTime</th> -->
 
@@ -71,38 +75,36 @@
 				<!--  %= Expression - variable value -->
 				<!--  Dynamic  -->
 				<%
-				String productName = request.getParameter("productName");
-				Integer quantity = Integer.parseInt(request.getParameter("quantity"));
-				float price = Float.parseFloat(request.getParameter("price"));
-				double gstAmount = Float.parseFloat(request.getParameter("gstAmount"));
-				float totalAmount = Float.parseFloat(request.getParameter("totalPrice"));
-				String deliveryTime = request.getParameter("deliveryTime");
-
-				//String orderedDate = order.getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-				//String orderedTime = order.getTime().format(DateTimeFormatter.ofPattern("HH:mm"));
-				//String deliveryTime = deliveryTime.format(DateTimeFormatter.ofPattern("HH:mm"));
+				List<Order> userOrder = (List<Order>)request.getAttribute("ORDER_DETAILS");
+				//List<Order> orders = OrderDao.getAdminBillList();
+				int i = 0;
+				for (Order order : userOrder) {
+					i++;
+					String orderedDate = order.getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+					String orderedTime = order.getTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+					String deliveryTime = order.getDeliveryTime().format(DateTimeFormatter.ofPattern("HH:mm")); 
 				%>
 
 				<tr>
-					<td><%=productName%></td>
-					<td><%=quantity%></td>
-					<td><%=price%></td>
-					<td><%=gstAmount%></td>
-					<td><%=totalAmount%></td>
-					<td><%=deliveryTime%></td>
-					<td><a
-						href="ConfirmOrderServlet?productName=<%=productName%>&quantity=<%=quantity%>&price=<%=price%>&gstAmount=<%=gstAmount%>&totalAmount=<%=totalAmount%>">
-							<button class="btn btn-primary">Confirm Order</button>
-					</a></td>
-
-
+					<td><%=i%></td>
+					<td><%=order.getUser().getName()%></td>
+					<td><%=order.getProduct().getId()%></td>
+					<td><%=order.getDate()%></td>
+					<td><%=order.getTime()%></td>
+					<td><%=order.getPizzaName()%></td>
+					<td><%=order.getQuantity()%></td>
+					<td><%=order.getPrice()%></td>
+					<td><%=order.getGstAmount()%></td>
+					<td><%=order.getTotalAmount()%></td>
+					<td><%=order.getDeliveryTime()%></td>
 				</tr>
+				<%
+				}
+				%>
 
 
 			</tbody>
 		</table>
-		<div class="text-center"></div>
 	</main>
-
 </body>
 </html>

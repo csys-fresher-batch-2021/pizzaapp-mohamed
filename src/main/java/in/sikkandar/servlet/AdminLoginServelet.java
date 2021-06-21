@@ -34,9 +34,10 @@ public class AdminLoginServelet extends HttpServlet {
 		boolean isValid = "admin".equals(username) && "admin".equals(password);
 		if (isValid) {
 			HttpSession session = request.getSession();
-			session.setAttribute("LOGGED_IN_USER", username);
+			session.setAttribute("LOGGED_IN_ADMIN", username);
+			String infoMessage = "Admin login Successfully";
 
-			response.sendRedirect("ModifyProducts.jsp");
+			response.sendRedirect("ModifyProducts.jsp?infoMessage="+infoMessage);
 		} else {
 			String errorMessage = "Name or Password is Wrong";
 			response.sendRedirect("Adminlogin.jsp?errorMessage=" + errorMessage);

@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <%
 String loggedInUsername = (String)session.getAttribute("LOGGED_IN_USER");
-String role = (String) session.getAttribute("ROLE");
+String loggedInAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
 %>
 
 <header>
@@ -30,6 +30,7 @@ String role = (String) session.getAttribute("ROLE");
         </div>
       </li>
     </ul>
+    <%if(loggedInUsername == null && loggedInAdmin == null ){ %>
      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
       <li class="nav-item active">
         <a class="nav-link" href="Adminlogin.jsp"> Admin Login</a>
@@ -39,6 +40,25 @@ String role = (String) session.getAttribute("ROLE");
         <a class="nav-link" href="UserLogin.jsp">User Login</a>
       </li>
       </ul>
+      <%}else{ 
+      if(loggedInUsername != null){
+      %>
+       <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"> Welcome <%=loggedInUsername%></a>
+      </li>
+      <li class="nav-item"><a class="nav-link"
+					href="MyOrderServlet">My Orders</a></li>
+      <%}else{ %>
+      <li class="nav-item active">
+        <a class="nav-link" href="#"> Welcome <%=loggedInAdmin%></a>
+      </li>
+      <%} %>
+      <li class="nav-item">
+        <a class="nav-link" href="LogoutServlet">Logout</a>
+      </li>
+      </ul>
+      <%} %>
    
   </div>
 </nav>

@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import in.sikkandar.dao.UserDao;
+import in.sikkandar.exception.ServiceException;
 import in.sikkandar.model.User;
 import in.sikkandar.validator.UserValidator;
 
@@ -43,7 +44,7 @@ public class UserService {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public boolean checkUser(String userName, String userPassword) {
+	public void checkUser(String userName, String userPassword) {
 		boolean isValidUser = false;
 		List<User> users = UserDao.getUser();
 		for (User userDetails : users) {
@@ -53,7 +54,8 @@ public class UserService {
 
 			}
 		}
-		return isValidUser;
+		if(!isValidUser) {
+			throw new ServiceException("Name or PassWord Is Wrong");
+		}
 	}
-
 }
