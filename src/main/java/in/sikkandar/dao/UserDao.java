@@ -14,10 +14,14 @@ import in.sikkandar.util.ConnectionUtil;
 public class UserDao {
 	
 	private UserDao() {
-		
+		// Default Constructor
 	}
 
-	
+	/**
+	 * get user list in dp 
+	 * @return
+	 * @throws DBException
+	 */
 	public static List<User> getUser() throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -61,6 +65,12 @@ public class UserDao {
 		return userReg;
 	}
 
+	/**
+	 * add a user in db
+	 * @param user
+	 * @throws DBException
+	 */
+	
 	public static void register1(User user) throws DBException {
 
 		Connection connection = null;
@@ -91,6 +101,11 @@ public class UserDao {
 
 	}
 	
+	/**
+	 * get name in db 
+	 * @param name
+	 * @return
+	 */
 	public static int getUserId(String name) {
 		Connection connection = null;
 		PreparedStatement pst = null;

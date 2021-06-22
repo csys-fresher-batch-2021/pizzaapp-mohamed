@@ -9,6 +9,12 @@ import in.sikkandar.model.User;
 import in.sikkandar.validator.UserValidator;
 
 public class UserService {
+	
+	/**
+	 * validate a all details
+	 * @param user
+	 * @return
+	 */
 
 	public boolean addDetails(User user) {
 		boolean registerd = false;

@@ -13,9 +13,14 @@ import in.sikkandar.util.ConnectionUtil;
 
 public class ProductDao {
 	private ProductDao() {
-
+		// Default Constructor
 	}
 
+	/**
+	 * add product is,name,price in db
+	 * @param product
+	 * @throws DBException
+	 */
 	public static void addProduct(Product product) throws DBException {
 
 		Connection connection = null;
@@ -44,6 +49,12 @@ public class ProductDao {
 
 	}
 
+	/**
+	 * delete a product in db 
+	 * and sql query
+	 * @param productId
+	 * @param productName
+	 */
 	public static void deleteProduct(int productId, String productName) {
 
 		Connection connection = null;
@@ -70,6 +81,13 @@ public class ProductDao {
 		}
 
 	}
+	
+	/**
+	 * product list get in db 
+	 * and sql query
+	 * @return
+	 * @throws DBException
+	 */
 
 	public static List<Product> getProduct() throws DBException {
 		Connection connection = null;

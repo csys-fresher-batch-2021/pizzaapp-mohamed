@@ -10,9 +10,15 @@ import in.sikkandar.validator.OrederSheetValidation;
 
 public class OrderSheetService {
 	private OrderSheetService() {
-
+		// Default Constructor
 	}
 
+	/**
+	 * 
+	 * @param pizzaType1
+	 * @param quantity
+	 * @return
+	 */
 	public static Order orderList(String pizzaType1, int quantity) {
 		double price = 0;
 		double gst = 0.07;
@@ -20,8 +26,9 @@ public class OrderSheetService {
 		for (Product add : ProductDao.getProduct()) {
 
 			try {
-				if (add.getName().equalsIgnoreCase(pizzaType1) && OrederSheetValidation.isValidProductQuantity(quantity)) {
-					
+				if (add.getName().equalsIgnoreCase(pizzaType1)
+						&& OrederSheetValidation.isValidProductQuantity(quantity)) {
+
 					price = add.getPrice();
 					double amount = price * quantity;
 					double gstAmount = amount * gst;

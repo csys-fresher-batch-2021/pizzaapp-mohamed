@@ -1,10 +1,15 @@
 package in.sikkandar.model;
 
+/**
+ * product variables in private
+ * 
+ * @author moha2636
+ *
+ */
 public class Product {
 	private Integer id;
 	private String name;
 	private Float price;
-	
 
 	public Integer getId() {
 		return id;
@@ -23,7 +28,7 @@ public class Product {
 	}
 
 	public Product() {
-
+		// Default Constructor
 	}
 
 	public String getName() {
@@ -42,11 +47,12 @@ public class Product {
 		this.price = price;
 	}
 
+	/**
+	 * set a to-string
+	 */
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", price=" + price + "]";
 	}
-
-	
 
 }

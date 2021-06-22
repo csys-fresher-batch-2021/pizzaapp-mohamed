@@ -20,9 +20,7 @@
 				<label>Pizza type</label>
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
-						<span class="input-group-text"> <em class="fa fa-opencart"
-							style="font-size: 24px"></em>
-						</span>
+						<span class="input-group-text"> </span>
 					</div>
 					<input name="pizzaType" class="form-control"
 						placeholder="Enter pizzaname " autocomplete="off" type="text"
@@ -32,9 +30,7 @@
 				<label>Quantity</label>
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
-						<span class="input-group-text"> <em class="fa fa-quantity "
-							style="font-size: 24px"></em>
-						</span>
+						<span class="input-group-text"> </span>
 					</div>
 					<input name="quantity" class="form-control"
 						placeholder="Enter quantity" autocomplete="off" type="number"

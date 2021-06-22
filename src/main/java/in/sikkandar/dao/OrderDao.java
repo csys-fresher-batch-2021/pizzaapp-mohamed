@@ -17,10 +17,17 @@ import in.sikkandar.model.User;
 import in.sikkandar.util.ConnectionUtil;
 
 public class OrderDao {
-	private OrderDao(){
-		
+
+	private OrderDao() {
+		// Default Constructor
 	}
 
+	/**
+	 * Connect to connection util then set values in model class variables and
+	 * insert in a db
+	 * 
+	 * @param orders
+	 */
 	public static void addOrder(Order orders) {
 
 		Connection connection = null;
@@ -36,14 +43,14 @@ public class OrderDao {
 			Time orderTime = java.sql.Time.valueOf(orders.getTime());
 			Time deliveryTime = java.sql.Time.valueOf(orders.getDeliveryTime());
 			pst = connection.prepareStatement(sql);
-			
-			pst.setInt(1,user.getUserid());
-			pst.setInt(2,product.getId());
+
+			pst.setInt(1, user.getUserid());
+			pst.setInt(2, product.getId());
 			pst.setDate(3, (java.sql.Date) orderDate);
 			pst.setTime(4, orderTime);
 			pst.setString(5, orders.getPizzaName());
 			pst.setInt(6, orders.getQuantity());
-			pst.setDouble(7,orders.getPrice());
+			pst.setDouble(7, orders.getPrice());
 			pst.setDouble(8, orders.getTotalAmount());
 			pst.setDouble(9, orders.getGstAmount());
 			pst.setTime(10, deliveryTime);
@@ -59,6 +66,13 @@ public class OrderDao {
 		}
 
 	}
+
+	/**
+	 * get all values in db
+	 * 
+	 * @return
+	 * @throws DBException
+	 */
 
 	public static List<Order> getBillList() throws DBException {
 		Connection connection = null;
@@ -108,7 +122,13 @@ public class OrderDao {
 		}
 		return list;
 	}
-	
+
+	/**
+	 * get all list in db for admin use
+	 * 
+	 * @return
+	 * @throws DBException
+	 */
 	public static List<Order> getAdminBillList() throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -126,10 +146,10 @@ public class OrderDao {
 				Order order = new Order();
 
 				User user = new User();
-				String userName=result.getString("username");
+				String userName = result.getString("username");
 				user.setName(userName);
 				Product product = new Product();
-				int productId=result.getInt("product_id");
+				int productId = result.getInt("product_id");
 				product.setId(productId);
 				Date date = result.getDate("orderdate");
 				Time orderTime = result.getTime("ordertime");
@@ -168,8 +188,14 @@ public class OrderDao {
 		return list;
 	}
 
+	/**
+	 * get all values in db for use in user
+	 * 
+	 * @param userid
+	 * @return
+	 */
 	public static List<Order> getUserOrders(Integer userid) {
-		
+
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet result = null;
@@ -187,10 +213,10 @@ public class OrderDao {
 				Order order = new Order();
 
 				User user = new User();
-				String userName=result.getString("username");
+				String userName = result.getString("username");
 				user.setName(userName);
 				Product product = new Product();
-				int productId=result.getInt("product_id");
+				int productId = result.getInt("product_id");
 				product.setId(productId);
 				Date date = result.getDate("orderdate");
 				Time orderTime = result.getTime("ordertime");
