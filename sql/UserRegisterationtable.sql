@@ -1,6 +1,7 @@
 create database Register_db
 
 CREATE TABLE userregister3(
+	userid serial primary key,
 	name varchar(20) NOT NULL,
 	email varchar(20) unique NOT NULL,
     mobilenumber bigint NOT NULL,

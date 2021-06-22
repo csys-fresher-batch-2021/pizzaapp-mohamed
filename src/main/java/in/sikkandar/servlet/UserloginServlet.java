@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import in.sikkandar.service.UserService;
 
@@ -34,11 +35,17 @@ public class UserloginServlet extends HttpServlet {
 		String userName = request.getParameter("username");
 		String userPassCode = request.getParameter("password");
 		UserService user = new UserService();
-		boolean isValidUser = user.checkUser(userName, userPassCode);
-		if (isValidUser) {
-			response.sendRedirect("Order.jsp");
+		
+		try {
+			user.checkUser(userName, userPassCode);
+			
+				HttpSession session = request.getSession();
+				session.setAttribute("LOGGED_IN_USER", userName);
+				response.sendRedirect("Order.jsp");
 
-		} else {
+			
+		} catch (Exception e) {
+			e.printStackTrace();
 			String errorMessage = "Name or Password is Wrong";
 			response.sendRedirect("UserLogin.jsp?errorMessage=" + errorMessage);
 		}

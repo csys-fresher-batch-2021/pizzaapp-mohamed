@@ -1,12 +1,21 @@
 package in.sikkandar.model;
 
 public class User {
+
+	public User() {
+		// Default Constructor
+	}
+
+	/**
+	 * set a all thing in in private
+	 */
 	private String name;
 	private String email;
 	private long mobile;
 	private String address;
 	private String password;
 	private String confrimPassword;
+	private Integer userid;
 
 	public String getPassword() {
 		return password;
@@ -56,21 +65,22 @@ public class User {
 		this.address = address;
 	}
 
-	@Override
-	public String toString() {
-		return "User [name=" + name + ", email=" + email + ", mobile=" + mobile + ", address=" + address + ", password="
-				+ password + ", confrimPassword=" + confrimPassword + "]";
+	public Integer getUserid() {
+		return userid;
 	}
 
-	public User(String name, String email, long mobile, String address, String password, String confirmPassword) {
+	public void setUserid(Integer userid) {
+		this.userid = userid;
+	}
 
-		super();
-		this.name = name;
-		this.email = email;
-		this.mobile = mobile;
-		this.address = address;
-		this.password = password;
-		this.password = confirmPassword;
+	/**
+	 * set all variables in to-string method
+	 */
+
+	@Override
+	public String toString() {
+		return "User [userid=" + userid + ", name=" + name + ", email=" + email + ", mobile=" + mobile + ", address="
+				+ address + ", password=" + password + ", confrimPassword=" + confrimPassword + "]";
 	}
 
 }

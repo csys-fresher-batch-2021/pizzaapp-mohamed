@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@page import="in.sikkandar.service.*"%>
+    pageEncoding="ISO-8859-1"%>
+    <%@page import="in.sikkandar.service.*"%>
 <%@page import="java.util.List"%>
-<%@page import="in.sikkandar.model.Product"%>
-<%@page import="in.sikkandar.dao.ProductDao"%>
-
-
+<%@page import="in.sikkandar.model.User"%>
+<%@page import="in.sikkandar.dao.UserDao"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,10 +43,14 @@
 			<caption>Available PizzaTypes</caption>
 			<thead>
 				<tr>
-					<th scope="col">S.No</th>
-					<th scope="col">ID</th>
-					<th scope="col">Pizza Name</th>
-					<th scope="col">Price</th>
+					<th scope="col">UserId</th>
+					<th scope="col">UserName</th>
+					<th scope="col">UserEmail</th>
+					<th scope="col">UserMobile</th>
+					<th scope="col">Address</th>
+					<th scope="col">Password</th>
+					<th scope="col">Confirm Password</th>
+					
 				</tr>
 			</thead>
 			<tbody>
@@ -56,17 +58,20 @@
 				<!--  %= Expression - variable value -->
 				<!--  Dynamic  -->
 				<%
-				List<Product> products = ProductDao.getProduct();
+				List<User> list = UserDao.getUser();
 				//List<Product> products = ProductService.getProducts();
 				int i = 0;
-				for (Product product : products) {
+				for (User lists : list) {
 					i++;
 				%>
 				<tr>
 					<td><%=i%></td>
-					<td><%=product.getId()%></td>
-					<td><%=product.getName()%></td>
-					<td><%=product.getPrice()%></td>
+					<td><%=lists.getName()%></td>
+					<td><%=lists.getEmail()%></td>
+					<td><%=lists.getMobile()%></td>
+					<td><%=lists.getAddress()%></td>
+					<td><%=lists.getPassword()%></td>
+					<td><%=lists.getConfrimPassword()%></td>
 
 				</tr>
 				<%

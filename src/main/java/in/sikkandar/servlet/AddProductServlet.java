@@ -22,20 +22,21 @@ public class AddProductServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		String productId = request.getParameter("id");
-		int productId1 = Integer.parseInt(productId);
-		String productName = request.getParameter("name");
-		String productPrice = request.getParameter("price");
-		Float productprice1=Float.parseFloat(productPrice);
-		
+		try {
+			String productId = request.getParameter("id");
+			int productId1 = Integer.parseInt(productId);
+			String productName = request.getParameter("name");
+			String productPrice = request.getParameter("price");
+			Float productprice1 = Float.parseFloat(productPrice);
 
-		boolean isAdded = ProductService.addProduct( productId1,productName, productprice1);
+			ProductService.addProduct(productId1, productName, productprice1);
 
-		if (isAdded) {
-			response.sendRedirect("ListProducts.jsp");
-		} else {
-			String errorMessage = "Unable to add Product Name";
+			String infoMessage = "Successfully added";
+			response.sendRedirect("ListProducts.jsp?infoMessage=" + infoMessage);
+
+		} catch (Exception e) {
+
+			String errorMessage = e.getMessage();
 			response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);
 		}
 	}

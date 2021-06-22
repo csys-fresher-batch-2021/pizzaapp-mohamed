@@ -31,31 +31,20 @@ public class DeleteProductServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		String productId = request.getParameter("productId");
-		int productId1=Integer.parseInt(productId);
-		String productName = request.getParameter("productName");
+		try {
+			String productId = request.getParameter("productId");
+			int productId1 = Integer.parseInt(productId);
+			String productName = request.getParameter("productName");
 
-		boolean isDeleted = ProductService.deleteProduct(productId1, productName);
+			ProductService.deleteProduct(productId1, productName);
 
-		if (isDeleted) {
-			response.sendRedirect("ListProducts.jsp");
-		} else {
-			String errorMessage = "Unable to delete Product Name";
+			String infoMessage = "Successfully deleted";
+			response.sendRedirect("ListProducts.jsp?infoMessage=" + infoMessage);
+		} catch (Exception e) {
+			String errorMessage = e.getMessage();
 			response.sendRedirect("DeleteProduct.jsp?errorMessage=" + errorMessage);
 		}
 
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		doGet(request, response);
 	}
 
 }
