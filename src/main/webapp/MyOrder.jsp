@@ -8,9 +8,6 @@
 <%@page import="java.util.Date"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="java.time.LocalTime"%>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,22 +40,21 @@
 }
 </style>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>MY ORDER LIST</title>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-		<h3>BILL GENRATION</h3>
+		<h3>MY ORDER LIST</h3>
 		<p class="text-center"><jsp:include page="Message.jsp"></jsp:include></p>
 		<table class="table table-bordered" id="bill">
-			<caption>DISPLAY BILL</caption>
 			<thead>
 				<tr>
 					<th scope="col">OrderId</th>
 					<th scope="col">UserName</th>
 					<th scope="col">ProductId</th>
 					<th scope="col">OrderDate</th>
-					<th scope="col">OrderTime</th> 
+					<th scope="col">OrderTime</th>
 					<th scope="col">PizzaName</th>
 					<th scope="col">Quantity</th>
 					<th scope="col">Price</th>
@@ -69,20 +65,16 @@
 				</tr>
 			</thead>
 			<tbody>
-				<!--  Scriptlets ( Java Code ) -->
-				<!--  %= Expression - variable value -->
-				<!--  Dynamic  -->
 				<%
-				List<Order> userOrder = (List<Order>)request.getAttribute("ORDER_DETAILS");
+				List<Order> userOrder = (List<Order>) request.getAttribute("ORDER_DETAILS");
 				//List<Order> orders = OrderDao.getAdminBillList();
 				int i = 0;
 				for (Order order : userOrder) {
 					i++;
 					String orderedDate = order.getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 					String orderedTime = order.getTime().format(DateTimeFormatter.ofPattern("HH:mm"));
-					String deliveryTime = order.getDeliveryTime().format(DateTimeFormatter.ofPattern("HH:mm")); 
+					String deliveryTime = order.getDeliveryTime().format(DateTimeFormatter.ofPattern("HH:mm"));
 				%>
-
 				<tr>
 					<td><%=i%></td>
 					<td><%=order.getUser().getName()%></td>
@@ -99,8 +91,6 @@
 				<%
 				}
 				%>
-
-
 			</tbody>
 		</table>
 	</main>

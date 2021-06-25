@@ -29,13 +29,10 @@ public class OrderDao {
 	 * @param orders
 	 */
 	public static void addOrder(Order orders) {
-
 		Connection connection = null;
 		PreparedStatement pst = null;
-
 		try {
 			connection = ConnectionUtil.getConnection();
-
 			String sql = "insert into OrderPizza1(user_id,product_id,orderdate,ordertime,pizzatype1,quantity,price,totalamount,gstamount,deliverytime) values(?,?,?,?,?,?,?,?,?,?)";
 			User user = orders.getUser();
 			Product product = orders.getProduct();
@@ -43,7 +40,6 @@ public class OrderDao {
 			Time orderTime = java.sql.Time.valueOf(orders.getTime());
 			Time deliveryTime = java.sql.Time.valueOf(orders.getDeliveryTime());
 			pst = connection.prepareStatement(sql);
-
 			pst.setInt(1, user.getUserid());
 			pst.setInt(2, product.getId());
 			pst.setDate(3, (java.sql.Date) orderDate);
@@ -54,17 +50,12 @@ public class OrderDao {
 			pst.setDouble(8, orders.getTotalAmount());
 			pst.setDouble(9, orders.getGstAmount());
 			pst.setTime(10, deliveryTime);
-
 			pst.executeUpdate();
-
 		} catch (ClassNotFoundException | SQLException e) {
-
 			e.printStackTrace();
 		} finally {
 			ConnectionUtil.close(connection, pst);
-
 		}
-
 	}
 
 	/**
@@ -81,13 +72,11 @@ public class OrderDao {
 		List<Order> list = new ArrayList<>();
 		try {
 			connection = ConnectionUtil.getConnection();
-
 			String sql = "select * from OrderPizza1";
 			pst = connection.prepareStatement(sql);
 			result = pst.executeQuery();
 			while (result.next()) {
 				Order order = new Order();
-
 				Date date = result.getDate("orderDate");
 				Time orderTime = result.getTime("orderTime");
 				String pizzaType = result.getString("pizzaType1");
@@ -96,11 +85,9 @@ public class OrderDao {
 				float totalAmount = result.getFloat("totalAmount");
 				Double gstAmount = result.getDouble("gstAmount");
 				Time deliveryTime = result.getTime("deliveryTime");
-
 				LocalDate orderDate = ((java.sql.Date) date).toLocalDate();
 				LocalTime orderTime1 = orderTime.toLocalTime();
 				LocalTime deliveryTime1 = deliveryTime.toLocalTime();
-
 				order.setDate(orderDate);
 				order.setTime(orderTime1);
 				order.setPizzaName(pizzaType);
@@ -109,7 +96,6 @@ public class OrderDao {
 				order.setTotalAmount(totalAmount);
 				order.setGstAmount(gstAmount);
 				order.setDeliveryTime(deliveryTime1);
-
 				list.add(order);
 			}
 
@@ -136,7 +122,6 @@ public class OrderDao {
 		List<Order> list = new ArrayList<>();
 		try {
 			connection = ConnectionUtil.getConnection();
-
 			String sql = "select u.name as username,ap.productname as productname,o.product_id,o.orderdate,o.ordertime,o.pizzatype1,o.quantity,\r\n"
 					+ "o.price,o.totalamount,o.gstamount,o.deliverytime \r\n"
 					+ "from orderpizza1 o,addproduct ap,userregister3 u where o.user_id = u.userid and o.product_id = ap.productid;";
@@ -144,7 +129,6 @@ public class OrderDao {
 			result = pst.executeQuery();
 			while (result.next()) {
 				Order order = new Order();
-
 				User user = new User();
 				String userName = result.getString("username");
 				user.setName(userName);
@@ -159,11 +143,9 @@ public class OrderDao {
 				float totalAmount = result.getFloat("totalamount");
 				Double gstAmount = result.getDouble("gstamount");
 				Time deliveryTime = result.getTime("deliverytime");
-
 				LocalDate orderDate = ((java.sql.Date) date).toLocalDate();
 				LocalTime orderTime1 = orderTime.toLocalTime();
 				LocalTime deliveryTime1 = deliveryTime.toLocalTime();
-
 				order.setUser(user);
 				order.setProduct(product);
 				order.setDate(orderDate);
@@ -174,7 +156,6 @@ public class OrderDao {
 				order.setTotalAmount(totalAmount);
 				order.setGstAmount(gstAmount);
 				order.setDeliveryTime(deliveryTime1);
-
 				list.add(order);
 			}
 
@@ -183,7 +164,6 @@ public class OrderDao {
 			throw new DBException("Unable to show bill");
 		} finally {
 			ConnectionUtil.close(connection, pst);
-
 		}
 		return list;
 	}
@@ -195,14 +175,12 @@ public class OrderDao {
 	 * @return
 	 */
 	public static List<Order> getUserOrders(Integer userid) {
-
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet result = null;
 		List<Order> list = new ArrayList<>();
 		try {
 			connection = ConnectionUtil.getConnection();
-
 			String sql = "select u.name as username,ap.productname as productname,o.product_id,o.orderdate,o.ordertime,o.pizzatype1,o.quantity,\r\n"
 					+ "o.price,o.totalamount,o.gstamount,o.deliverytime \r\n"
 					+ "from orderpizza1 o,addproduct ap,userregister3 u where o.user_id = u.userid and o.product_id = ap.productid and u.userid=?;";
@@ -211,7 +189,6 @@ public class OrderDao {
 			result = pst.executeQuery();
 			while (result.next()) {
 				Order order = new Order();
-
 				User user = new User();
 				String userName = result.getString("username");
 				user.setName(userName);
@@ -226,11 +203,9 @@ public class OrderDao {
 				float totalAmount = result.getFloat("totalamount");
 				Double gstAmount = result.getDouble("gstamount");
 				Time deliveryTime = result.getTime("deliverytime");
-
 				LocalDate orderDate = ((java.sql.Date) date).toLocalDate();
 				LocalTime orderTime1 = orderTime.toLocalTime();
 				LocalTime deliveryTime1 = deliveryTime.toLocalTime();
-
 				order.setUser(user);
 				order.setProduct(product);
 				order.setDate(orderDate);
@@ -241,18 +216,14 @@ public class OrderDao {
 				order.setTotalAmount(totalAmount);
 				order.setGstAmount(gstAmount);
 				order.setDeliveryTime(deliveryTime1);
-
 				list.add(order);
 			}
-
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 			throw new DBException("Unable to show bill");
 		} finally {
 			ConnectionUtil.close(connection, pst);
-
 		}
 		return list;
 	}
-
 }

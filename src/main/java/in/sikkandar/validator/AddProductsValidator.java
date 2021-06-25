@@ -2,7 +2,6 @@ package in.sikkandar.validator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import in.sikkandar.exception.ValidationException;
 
 public class AddProductsValidator {
@@ -19,7 +18,7 @@ public class AddProductsValidator {
 		}
 	}
 
-	public static void isValidProductPrice(float productPrice)throws ValidationException {
+	public static void isValidProductPrice(float productPrice) throws ValidationException {
 		if (productPrice < 100) {
 			throw new ValidationException("Price should be more than 100");
 		}

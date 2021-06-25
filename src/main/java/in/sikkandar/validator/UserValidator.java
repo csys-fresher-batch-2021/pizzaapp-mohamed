@@ -1,10 +1,10 @@
 package in.sikkandar.validator;
 
-
 public class UserValidator {
 	private UserValidator() {
-		
+
 	}
+
 	/**
 	 * Check whether name is valid Name must contain character. Numbers special
 	 * characters are not accepted
@@ -19,7 +19,6 @@ public class UserValidator {
 			valid = true;
 		} else {
 			valid = false;
-
 		}
 		return valid;
 	}
@@ -42,7 +41,6 @@ public class UserValidator {
 			valid = true;
 		} else {
 			valid = false;
-
 		}
 		return valid;
 	}
@@ -61,7 +59,6 @@ public class UserValidator {
 			valid = true;
 		} else {
 			valid = false;
-
 		}
 		return valid;
 	}
@@ -79,7 +76,6 @@ public class UserValidator {
 			valid = true;
 		} else {
 			valid = false;
-
 		}
 		return valid;
 	}
@@ -93,17 +89,13 @@ public class UserValidator {
 	 */
 	public static boolean isPasswordValid(String pass) {
 		boolean valid = false;
-
 		String regex = "^(?=.*[0-9])" + "(?=.*[a-z])(?=.*[A-Z])" + "(?=.*[@#$%^&+=])" + "(?=\\S+$).{8,20}$";
-
 		if (pass != null && pass.matches(regex)) {
 			valid = true;
 		} else {
 			valid = false;
-
 		}
 
 		return valid;
 	}
-
 }

@@ -2,13 +2,11 @@ package in.sikkandar.servlet;
 
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import in.sikkandar.model.Order;
 import in.sikkandar.service.OrderSheetService;
 
@@ -36,7 +34,6 @@ public class OrderSheetServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String pizzaType1 = request.getParameter("pizzaType");
 		String quantity1 = request.getParameter("quantity");
-
 		try {
 			int Quantity = Integer.parseInt(quantity1);
 			Order order = OrderSheetService.orderList(pizzaType1, Quantity);
@@ -44,12 +41,9 @@ public class OrderSheetServlet extends HttpServlet {
 			response.sendRedirect("Bill.jsp?productName=" + order.getPizzaName() + "&quantity=" + order.getQuantity()
 					+ "&price=" + order.getPrice() + "&gstAmount=" + order.getGstAmount() + "&totalPrice="
 					+ order.getTotalAmount() + "&deliveryTime=" + deliveryTime);
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-			String errorMessage = "This Product not available";
+		} catch (Exception e) {
+			String errorMessage = e.getMessage();
 			response.sendRedirect("Order.jsp?errorMessage=" + errorMessage);
 		}
-
 	}
-
 }

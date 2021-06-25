@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import in.sikkandar.service.ProductService;
 
 /**
@@ -35,16 +34,12 @@ public class DeleteProductServlet extends HttpServlet {
 			String productId = request.getParameter("productId");
 			int productId1 = Integer.parseInt(productId);
 			String productName = request.getParameter("productName");
-
 			ProductService.deleteProduct(productId1, productName);
-
 			String infoMessage = "Successfully deleted";
 			response.sendRedirect("ListProducts.jsp?infoMessage=" + infoMessage);
 		} catch (Exception e) {
 			String errorMessage = e.getMessage();
 			response.sendRedirect("DeleteProduct.jsp?errorMessage=" + errorMessage);
 		}
-
 	}
-
 }

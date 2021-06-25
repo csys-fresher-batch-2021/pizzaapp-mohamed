@@ -5,32 +5,35 @@
 <%@page import="in.sikkandar.model.Product"%>
 <%@page import="in.sikkandar.dao.ProductDao"%>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <style>
 #list {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
 }
 
 #list td, #customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
+	border: 1px solid #ddd;
+	padding: 8px;
 }
 
-#list tr:nth-child(even){background-color: #f2f2f2;}
+#list tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
 
-#list tr:hover {background-color: #ddd;}
+#list tr:hover {
+	background-color: #ddd;
+}
 
 #list th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #04AA6D;
+	color: white;
 }
 </style>
 <meta charset="ISO-8859-1">
@@ -77,4 +80,3 @@
 	</main>
 </body>
 </html>
-		
