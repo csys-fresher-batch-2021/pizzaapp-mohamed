@@ -36,9 +36,8 @@
 								style="font-size: 24px"></em>
 							</span>
 						</div>
-						<input name="email" class="form-control"
-							placeholder="Enter Email" autocomplete="off" type="text"
-							required>
+						<input name="email" class="form-control" placeholder="Enter Email"
+							autocomplete="off" type="text" required>
 					</div>
 
 					<label>MOBILE NUMBER</label>
@@ -49,8 +48,8 @@
 							</span>
 						</div>
 						<input name="mobile" class="form-control"
-							placeholder="Enter mobile number" autocomplete="off" type="number"
-							required>
+							placeholder="Enter mobile number" autocomplete="off"
+							type="number" required>
 					</div>
 
 					<label>ADDRESS</label>
@@ -85,8 +84,8 @@
 							</span>
 						</div>
 						<input name="reenterPass" class="form-control"
-							placeholder="Enter reenter password" autocomplete="off" type="password"
-							required>
+							placeholder="Enter reenter password" autocomplete="off"
+							type="password" required>
 					</div>
 
 					<div class="form-group">

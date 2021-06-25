@@ -28,16 +28,18 @@
 							Product</button>
 					</div>
 				</form>
-				
+
 				<form action="AdminView.jsp">
 					<div class="form-group">
-						<button class="btn btn-secondary btn-block" type="submit">View Order</button>
+						<button class="btn btn-secondary btn-block" type="submit">View
+							Order</button>
 					</div>
 				</form>
-				
+
 				<form action="UserList.jsp">
 					<div class="form-group">
-						<button class="btn btn-secondary btn-block" type="submit">User List</button>
+						<button class="btn btn-secondary btn-block" type="submit">User
+							List</button>
 					</div>
 				</form>
 			</article>

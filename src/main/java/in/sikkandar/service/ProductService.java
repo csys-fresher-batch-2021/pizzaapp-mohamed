@@ -7,7 +7,6 @@ import in.sikkandar.validator.AddProductsValidator;
 import in.sikkandar.validator.ExistsProductValidator;
 
 public class ProductService {
-
 	ProductService() {
 		// Default Constructor
 	}
@@ -25,18 +24,15 @@ public class ProductService {
 			AddProductsValidator.isValidProductName(productName);
 			AddProductsValidator.isValidProductPrice(productprice1);
 			AddProductsValidator.isValidProductId(productId1);
-
 			ExistsProductValidator.existsProduct(productId1, productName);
 			Product product = new Product(productId1, productName, productprice1);
-
 			ProductDao.addProduct(product);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ServiceException(e.getMessage());
 		}
-
 	}
-	
+
 	/**
 	 * 
 	 * @param productId
@@ -44,9 +40,7 @@ public class ProductService {
 	 */
 
 	public static void deleteProduct(int productId, String productName) {
-
 		try {
-
 			Product searchProduct = null;
 			for (Product product : ProductDao.getProduct()) {
 				if (product.getName().equals(productName) && product.getId().equals(productId)) {
@@ -57,12 +51,12 @@ public class ProductService {
 			}
 			if (searchProduct != null) {
 				ProductDao.getProduct().remove(searchProduct);
-				
+			} else {
+				throw new ServiceException("No Mathching Books Found");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ServiceException(e.getMessage());
 		}
-		
 	}
 }

@@ -12,13 +12,10 @@
 		<div class="jumbotron text-center">
 			<h1 class="display-3">Thank You!</h1>
 			<p class="lead">
-				<a class="btn btn-primary btn-sm"
-					href="Order.jsp" role="button">Continue to
-					order</a>
+				<a class="btn btn-primary btn-sm" href="Order.jsp" role="button">Continue
+					to order</a>
 			</p>
 		</div>
-
-
 	</main>
 </body>
 </html>

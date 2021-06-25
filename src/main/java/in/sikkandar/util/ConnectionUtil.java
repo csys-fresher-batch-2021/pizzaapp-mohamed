@@ -20,13 +20,8 @@ public class ConnectionUtil {
 
 	public static Connection getConnection() throws ClassNotFoundException, SQLException {
 		Connection connection = null;
-	
-		
-
 		Class.forName(DRIVER_CLASS_NAME);
-
 		connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
-		
 		return connection;
 	}
 
@@ -34,8 +29,6 @@ public class ConnectionUtil {
 		try {
 			if (con != null) {
 				con.close();
-				
-
 			}
 			if (pst != null) {
 				pst.close();

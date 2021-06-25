@@ -35,11 +35,10 @@ public class MyOrderServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 		int userid = 0;
 		try {
 			HttpSession session = request.getSession();
@@ -60,5 +59,3 @@ public class MyOrderServlet extends HttpServlet {
 		}
 	}
 }
-
-

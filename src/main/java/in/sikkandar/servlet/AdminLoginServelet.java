@@ -27,7 +27,6 @@ public class AdminLoginServelet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		String username = request.getParameter("userName");
 		String password = request.getParameter("passWord");
 		// Step 2: call Service
@@ -36,14 +35,10 @@ public class AdminLoginServelet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("LOGGED_IN_ADMIN", username);
 			String infoMessage = "Admin login Successfully";
-
-			response.sendRedirect("ModifyProducts.jsp?infoMessage="+infoMessage);
+			response.sendRedirect("ModifyProducts.jsp?infoMessage=" + infoMessage);
 		} else {
 			String errorMessage = "Name or Password is Wrong";
 			response.sendRedirect("Adminlogin.jsp?errorMessage=" + errorMessage);
-
 		}
-
 	}
-
 }

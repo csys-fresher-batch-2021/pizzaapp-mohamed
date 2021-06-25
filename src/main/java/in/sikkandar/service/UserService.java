@@ -2,40 +2,33 @@ package in.sikkandar.service;
 
 import java.sql.SQLException;
 import java.util.List;
-
 import in.sikkandar.dao.UserDao;
 import in.sikkandar.exception.ServiceException;
 import in.sikkandar.model.User;
 import in.sikkandar.validator.UserValidator;
 
 public class UserService {
-	
+
 	/**
 	 * validate a all details
+	 * 
 	 * @param user
 	 * @return
 	 */
 
 	public boolean addDetails(User user) {
 		boolean registerd = false;
-
 		boolean nameValid = UserValidator.isNameValid(user.getName());
 		boolean emailValid = UserValidator.isEmailValid(user.getEmail());
 		boolean mobileValid = UserValidator.isMobileNumberValid(user.getMobile());
 		boolean addressValid = UserValidator.isAddressValid(user.getAddress());
 		boolean passwordValid = UserValidator.isPasswordValid(user.getPassword());
-
 		if (nameValid && mobileValid && emailValid && addressValid && passwordValid) {
-
 			if (user.getPassword().equals(user.getConfrimPassword())) {
-
 				UserDao.register1(user);
 				registerd = true;
-
 			}
-
 		} else {
-
 			return registerd;
 		}
 		return registerd;
@@ -57,10 +50,9 @@ public class UserService {
 			if (userDetails.getName().equals(userName) && userDetails.getPassword().equals(userPassword)) {
 				isValidUser = true;
 				break;
-
 			}
 		}
-		if(!isValidUser) {
+		if (!isValidUser) {
 			throw new ServiceException("Name or PassWord Is Wrong");
 		}
 	}

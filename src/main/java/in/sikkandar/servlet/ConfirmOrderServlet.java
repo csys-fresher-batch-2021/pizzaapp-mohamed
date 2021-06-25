@@ -38,69 +38,52 @@ public class ConfirmOrderServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 		try {
-			
-		String productName = request.getParameter("productName");
-		Integer quantity = Integer.parseInt(request.getParameter("quantity"));
-		float price = Float.parseFloat(request.getParameter("price"));
-		double gstAmount = Float.parseFloat(request.getParameter("gstAmount"));
-		float totalAmount = Float.parseFloat(request.getParameter("totalAmount"));
-		
-		int userId = 0;
-		int productId = 0;
-		
-		LocalTime orderTime = LocalTime.now(); 
-		LocalTime deliveryTime =orderTime.plusMinutes(30);
-		LocalDate date = LocalDate.now();
-		
-		HttpSession session = request.getSession();
-		String userName = (String) session.getAttribute("LOGGED_IN_USER");
-		for (User users : UserDao.getUser()) {
-			if (userName.trim().equals(users.getName())) {
-				userId = users.getUserid();
+			String productName = request.getParameter("productName");
+			Integer quantity = Integer.parseInt(request.getParameter("quantity"));
+			float price = Float.parseFloat(request.getParameter("price"));
+			double gstAmount = Float.parseFloat(request.getParameter("gstAmount"));
+			float totalAmount = Float.parseFloat(request.getParameter("totalAmount"));
+			int userId = 0;
+			int productId = 0;
+			LocalTime orderTime = LocalTime.now();
+			LocalTime deliveryTime = orderTime.plusMinutes(30);
+			LocalDate date = LocalDate.now();
+			HttpSession session = request.getSession();
+			String userName = (String) session.getAttribute("LOGGED_IN_USER");
+			for (User users : UserDao.getUser()) {
+				if (userName.trim().equals(users.getName())) {
+					userId = users.getUserid();
+				}
 			}
-		}
-		for (Product product : ProductDao.getProduct()) {
-			
-			if (productName.trim().equals(product.getName())) {
-				productId = product.getId();
-				
-				break;
+			for (Product product : ProductDao.getProduct()) {
+				if (productName.trim().equals(product.getName())) {
+					productId = product.getId();
+					break;
+				}
 			}
+			Order orders = new Order();
+			User users = new User();
+			users.setUserid(userId);
+			orders.setUser(users);
+			Product products = new Product();
+			products.setId(productId);
+			orders.setProduct(products);
+			orders.setDate(date);
+			orders.setTime(orderTime);
+			orders.setDeliveryTime(deliveryTime);
+			orders.setPizzaName(productName);
+			orders.setQuantity(quantity);
+			orders.setPrice(price);
+			orders.setGstAmount(gstAmount);
+			orders.setTotalAmount(totalAmount);
+			OrderDao.addOrder(orders);
+			String infoMessage = "Your Order Successfully Placed";
+			response.sendRedirect("ConfirmOrder.jsp?infoMessage=" + infoMessage);
+		} catch (Exception e) {
+			e.printStackTrace();
+			String errorMessage = e.getMessage();
+			response.sendRedirect("ConfirmOrder.jsp?errorMessage" + errorMessage);
 		}
-		Order orders = new Order();
-		
-		User users = new User();
-		users.setUserid(userId);
-		orders.setUser(users);
-		
-		Product products = new Product();
-		products.setId(productId);
-		orders.setProduct(products);
-		
-		orders.setDate(date);
-		orders.setTime(orderTime);
-		orders.setDeliveryTime(deliveryTime);
-		
-		orders.setPizzaName(productName);
-		orders.setQuantity(quantity);
-		orders.setPrice(price);
-		orders.setGstAmount(gstAmount);
-		orders.setTotalAmount(totalAmount);
-		
-		OrderDao.addOrder(orders);
-		
-		String infoMessage = "Your Order Successfully Placed";
-		response.sendRedirect("ConfirmOrder.jsp?infoMessage=" + infoMessage);
-	 
-	} catch (Exception e) {
-		e.printStackTrace();
-		
-		String errorMessage = e.getMessage();
-		response.sendRedirect("ConfirmOrder.jsp?errorMessage" + errorMessage);
 	}
 }
-}
-
-
