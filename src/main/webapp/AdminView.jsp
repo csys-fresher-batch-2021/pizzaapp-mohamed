@@ -55,7 +55,6 @@
 				<tr>
 					<th scope="col">OrderId</th>
 					<th scope="col">UserName</th>
-					<th scope="col">ProductId</th>
 					<th scope="col">OrderDate</th>
 					<th scope="col">OrderTime</th>
 					<th scope="col">PizzaName</th>
@@ -64,6 +63,7 @@
 					<th scope="col">GST Amount</th>
 					<th scope="col">TotalPrice</th>
 					<th scope="col">DeliveryTime</th>
+					<th scope="col">DeliveryDate</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -73,21 +73,22 @@
 				for (Order order : orders) {
 					i++;
 					String orderedDate = order.getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+					String deliveryDate = order.getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 					String orderedTime = order.getTime().format(DateTimeFormatter.ofPattern("HH:mm"));
 					String deliveryTime = order.getDeliveryTime().format(DateTimeFormatter.ofPattern("HH:mm"));
 				%>
 				<tr>
 					<td><%=i%></td>
 					<td><%=order.getUser().getName()%></td>
-					<td><%=order.getProduct().getId()%></td>
-					<td><%=order.getDate()%></td>
-					<td><%=order.getTime()%></td>
+					<td><%=orderedDate%></td>
+					<td><%=orderedTime%></td>
 					<td><%=order.getPizzaName()%></td>
 					<td><%=order.getQuantity()%></td>
 					<td><%=order.getPrice()%></td>
 					<td><%=order.getGstAmount()%></td>
 					<td><%=order.getTotalAmount()%></td>
-					<td><%=order.getDeliveryTime()%></td>
+					<td><%=deliveryTime%></td>
+					<td><%=deliveryDate%></td>
 				</tr>
 				<%
 				}

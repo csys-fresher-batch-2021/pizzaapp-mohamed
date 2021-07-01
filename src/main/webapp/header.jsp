@@ -19,10 +19,6 @@ String loggedInAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item active"><a class="nav-link"
 					href="index.jsp">Home <span class="sr-only">(current)</span></a></li>
-				<li class="nav-item active"><a class="nav-link"
-					href="ListProducts.jsp">List Of products <span class="sr-only">(current)</span></a>
-				</li>
-
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="dropdownId"
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -48,6 +44,9 @@ String loggedInAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
 			<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 				<li class="nav-item active"><a class="nav-link" href="#">
 						Welcome <%=loggedInUsername%></a></li>
+				<li class="nav-item active"><a class="nav-link"
+					href="ListProducts.jsp">List Of products <span class="sr-only">(current)</span></a>
+				</li>
 				<li class="nav-item"><a class="nav-link" href="MyOrderServlet">My
 						Orders</a></li>
 				<%
@@ -55,6 +54,9 @@ String loggedInAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
 				%>
 				<li class="nav-item active"><a class="nav-link" href="#">
 						Welcome <%=loggedInAdmin%></a></li>
+				<li class="nav-item active"><a class="nav-link"
+					href="ListProducts.jsp">List Of products <span class="sr-only">(current)</span></a>
+				</li>
 				<%
 				}
 				%>

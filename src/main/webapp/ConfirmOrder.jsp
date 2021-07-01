@@ -10,6 +10,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<div class="jumbotron text-center">
+		<p class="text-center"><jsp:include page="Message.jsp"></jsp:include></p>
 			<h1 class="display-3">Thank You!</h1>
 			<p class="lead">
 				<a class="btn btn-primary btn-sm" href="Order.jsp" role="button">Continue

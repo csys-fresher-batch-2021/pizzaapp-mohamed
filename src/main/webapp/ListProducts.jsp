@@ -42,6 +42,9 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
+		<%
+		String loggedInUsername = (String) session.getAttribute("LOGGED_IN_USER");
+		%>
 		<h3>List Pizza Types</h3>
 		<p><jsp:include page="Message.jsp"></jsp:include></p>
 		<table class="table table-bordered" id="list">
@@ -49,7 +52,13 @@
 			<thead>
 				<tr>
 					<th scope="col">S.No</th>
+					<%
+					if (loggedInUsername == null) {
+					%>
 					<th scope="col">ID</th>
+					<%
+					}
+					%>
 					<th scope="col">Pizza Name</th>
 					<th scope="col">Price</th>
 				</tr>
@@ -67,7 +76,13 @@
 				%>
 				<tr>
 					<td><%=i%></td>
+					<%
+					if (loggedInUsername == null) {
+					%>
 					<td><%=product.getId()%></td>
+					<%
+					}
+					%>
 					<td><%=product.getName()%></td>
 					<td><%=product.getPrice()%></td>
 
