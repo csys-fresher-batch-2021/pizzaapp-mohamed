@@ -14,7 +14,7 @@ public class AddProductsValidator {
 		Pattern pattern = Pattern.compile(condition);
 		Matcher matcher = pattern.matcher(productName);
 		if (!matcher.matches()) {
-			throw new RuntimeException("InValid ProductName");
+			throw new ValidationException("InValid ProductName");
 		}
 	}
 
