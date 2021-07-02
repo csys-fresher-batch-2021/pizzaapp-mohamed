@@ -23,6 +23,5 @@ $(document).ready( function () {
 			$("#userTable tbody").append(content);
             //DataTable - pagination , sorting and searching
             $('#userTable').DataTable();
-			/*document.querySelector("#booking").innerHTML= content;*/
 	       });
 	        });
