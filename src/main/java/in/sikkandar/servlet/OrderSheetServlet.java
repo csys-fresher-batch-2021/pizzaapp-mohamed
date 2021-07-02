@@ -33,9 +33,9 @@ public class OrderSheetServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String pizzaType = request.getParameter("pizzaType");
-		String quantity = request.getParameter("quantity");
+		int Quantity = Integer.parseInt( request.getParameter("quantity"));
 		try {
-			int Quantity = Integer.parseInt(quantity);
+			
 			Order order = OrderSheetService.orderList(pizzaType, Quantity);
 			String deliveryTime = order.getDeliveryTime().format(DateTimeFormatter.ofPattern("HH:mm"));
 			response.sendRedirect("Bill.jsp?productName=" + order.getPizzaName() + "&quantity=" + order.getQuantity()

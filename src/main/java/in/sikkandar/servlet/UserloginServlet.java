@@ -34,15 +34,13 @@ public class UserloginServlet extends HttpServlet {
 		String userName = request.getParameter("username");
 		String userPassCode = request.getParameter("password");
 		UserService user = new UserService();
-		
+
 		try {
 			user.checkUser(userName, userPassCode);
-			
-				HttpSession session = request.getSession();
-				session.setAttribute("LOGGED_IN_USER", userName);
-				response.sendRedirect("Order.jsp");
+			HttpSession session = request.getSession();
+			session.setAttribute("LOGGED_IN_USER", userName);
+			response.sendRedirect("Order.jsp");
 
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 			String errorMessage = "Name or Password is Wrong";

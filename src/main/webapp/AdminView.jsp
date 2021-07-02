@@ -50,7 +50,7 @@
 	<main class="container-fluid">
 		<h3>ALL ORDERS</h3>
 		<p class="text-center"><jsp:include page="Message.jsp"></jsp:include></p>
-		<table class="table table-bordered" id="bill">
+		<table class="table table-bordered" id="userTable">
 			<thead>
 				<tr>
 					<th scope="col">OrderId</th>
@@ -66,35 +66,10 @@
 					<th scope="col">DeliveryDate</th>
 				</tr>
 			</thead>
-			<tbody>
-				<%
-				List<Order> orders = OrderDao.getAdminBillList();
-				int i = 0;
-				for (Order order : orders) {
-					i++;
-					String orderedDate = order.getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-					String deliveryDate = order.getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-					String orderedTime = order.getTime().format(DateTimeFormatter.ofPattern("HH:mm"));
-					String deliveryTime = order.getDeliveryTime().format(DateTimeFormatter.ofPattern("HH:mm"));
-				%>
-				<tr>
-					<td><%=i%></td>
-					<td><%=order.getUser().getName()%></td>
-					<td><%=orderedDate%></td>
-					<td><%=orderedTime%></td>
-					<td><%=order.getPizzaName()%></td>
-					<td><%=order.getQuantity()%></td>
-					<td><%=order.getPrice()%></td>
-					<td><%=order.getGstAmount()%></td>
-					<td><%=order.getTotalAmount()%></td>
-					<td><%=deliveryTime%></td>
-					<td><%=deliveryDate%></td>
-				</tr>
-				<%
-				}
-				%>
-			</tbody>
 		</table>
 	</main>
+	<script src="assets/js/AllOrders.js">
+		
+	</script>
 </body>
 </html>

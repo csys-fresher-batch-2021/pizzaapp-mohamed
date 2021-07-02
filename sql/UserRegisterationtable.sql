@@ -1,6 +1,6 @@
 create database Register_db
 
-CREATE TABLE userregister3(
+CREATE TABLE userregister(
 	userid serial primary key,
 	name varchar(20) NOT NULL,
 	email varchar(20) unique NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE userregister3(
     confirmpassword varchar(20) NOT NULL
 );
 
-select * from userregister3;
+select * from userregister;
 
 insert into userregister3(name,email,mobilenumber,address,password,confirmpassword)
 values('sikkandar','sikkandar@gmail.com',9698612143,'trichy','Sikkandar@123','Sikkandar@123');
