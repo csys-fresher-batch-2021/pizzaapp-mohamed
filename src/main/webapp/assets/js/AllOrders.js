@@ -2,13 +2,13 @@
  *This method used to fetch all details  
  */
 $(document).ready( function () {
-    let content="";	
     let data = [];
 	let url = "AllOrderServlet";
 	fetch(url).then(res=>res.json()).then(res=>{
 	data = res;
 	console.log(data);	
 	let j=0;
+	let content="";
 	 for(i = 0; i < data.length; i++){
 		 if(data.length != 0){
 		content+="<tr><td>"+ ++j + "</td><td>" + data[i].user.name + "<td>" + data[i].date + "</td>";
