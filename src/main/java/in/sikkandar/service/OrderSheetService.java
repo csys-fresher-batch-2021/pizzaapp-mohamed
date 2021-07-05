@@ -18,21 +18,21 @@ public class OrderSheetService {
 	 * @param quantity
 	 * @return
 	 */
-	public static Order orderList(String pizzaType1, int quantity) {
+	public static Order orderList(String pizzaType, int quantity) {
 		double price = 0;
-		double gst = 0.07;
+		final double gst = 0.07;
 		Order order = new Order();
 		try {
-			OrederSheetValidation.noProduct(pizzaType1);
+			OrederSheetValidation.noProduct(pizzaType);
 			OrederSheetValidation.isValidProductQuantity(quantity);
 			for (Product add : ProductDao.getProduct()) {
-				if (add.getName().equalsIgnoreCase(pizzaType1)) {
+				if (add.getName().equalsIgnoreCase(pizzaType)) {
 					price = add.getPrice();
 					double amount = price * quantity;
 					double gstAmount = amount * gst;
 					double totalAmount = gstAmount + amount;
 					LocalTime deliveryTime = LocalTime.now().plusMinutes(30);
-					order.setPizzaName(pizzaType1);
+					order.setPizzaName(pizzaType);
 					order.setQuantity(quantity);
 					order.setPrice(price);
 					order.setGstAmount(gstAmount);

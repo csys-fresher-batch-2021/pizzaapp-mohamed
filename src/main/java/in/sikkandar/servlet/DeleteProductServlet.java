@@ -31,10 +31,9 @@ public class DeleteProductServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			String productId = request.getParameter("productId");
-			int productId1 = Integer.parseInt(productId);
+			int productId = Integer.parseInt(request.getParameter("productId"));
 			String productName = request.getParameter("productName");
-			ProductService.deleteProduct(productId1, productName);
+			ProductService.deleteProduct(productId, productName);
 			String infoMessage = "Successfully deleted";
 			response.sendRedirect("ListProducts.jsp?infoMessage=" + infoMessage);
 		} catch (Exception e) {

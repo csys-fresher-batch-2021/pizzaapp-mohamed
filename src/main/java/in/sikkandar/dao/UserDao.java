@@ -28,7 +28,7 @@ public class UserDao {
 		List<User> userReg = new ArrayList<>();
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "select * from userregister3";
+			String sql = "select * from userregister";
 			pst = connection.prepareStatement(sql);
 			result = pst.executeQuery();
 			while (result.next()) {
@@ -70,7 +70,7 @@ public class UserDao {
 		PreparedStatement pst = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "insert into userregister3(name,email,mobilenumber,address,password,confirmpassword) values(?,?,?,?,?,?)";
+			String sql = "insert into userregister(name,email,mobilenumber,address,password,confirmpassword) values(?,?,?,?,?,?)";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, user.getName());
 			pst.setString(2, user.getEmail());
@@ -99,7 +99,7 @@ public class UserDao {
 		ResultSet result = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "select userId from userregister3 where name=?";
+			String sql = "select userId from userregister where name=?";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, name);
 			result = pst.executeQuery();

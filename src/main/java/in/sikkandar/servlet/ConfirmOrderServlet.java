@@ -48,7 +48,6 @@ public class ConfirmOrderServlet extends HttpServlet {
 			int productId = 0;
 			LocalTime orderTime = LocalTime.now();
 			LocalTime deliveryTime = orderTime.plusMinutes(30);
-			LocalDate date = LocalDate.now();
 			HttpSession session = request.getSession();
 			String userName = (String) session.getAttribute("LOGGED_IN_USER");
 			for (User users : UserDao.getUser()) {
@@ -63,6 +62,16 @@ public class ConfirmOrderServlet extends HttpServlet {
 				}
 			}
 			Order orders = new Order();
+			LocalDate date = LocalDate.now();
+			int hour = deliveryTime.getHour();
+			int minutes =deliveryTime.getMinute();
+			if((hour == 23) && (minutes >= 30)) {
+				LocalDate deliveryDate = LocalDate.now();
+				deliveryDate = deliveryDate.plusDays(1);
+				orders.setDeliveryDate(deliveryDate);
+			} else {
+				orders.setDeliveryDate(LocalDate.now());
+			}
 			User users = new User();
 			users.setUserid(userId);
 			orders.setUser(users);

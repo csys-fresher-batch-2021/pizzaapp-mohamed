@@ -21,6 +21,15 @@ public class Order {
 	private LocalTime time;
 	private LocalTime deliveryTime;
 	private Double gstAmount;
+	private LocalDate deliveryDate;
+
+	public LocalDate getDeliveryDate() {
+		return deliveryDate;
+	}
+
+	public void setDeliveryDate(LocalDate deliveryDate) {
+		this.deliveryDate = deliveryDate;
+	}
 
 	public Integer getId() {
 		return id;
@@ -122,14 +131,11 @@ public class Order {
 
 	}
 
-	/**
-	 * set a to-string method
-	 */
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", user=" + user + ", product=" + product + ", pizzaName=" + pizzaName
 				+ ", Quantity=" + Quantity + ", price=" + price + ", totalAmount=" + totalAmount + ", date=" + date
-				+ ", time=" + time + ", deliveryTime=" + deliveryTime + ", gstAmount=" + gstAmount + "]";
+				+ ", time=" + time + ", deliveryTime=" + deliveryTime + ", gstAmount=" + gstAmount + ", deliveryDate="
+				+ deliveryDate + "]";
 	}
-
 }

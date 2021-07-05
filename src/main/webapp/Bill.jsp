@@ -59,7 +59,6 @@
 					<th scope="col">Price</th>
 					<th scope="col">GST Amount</th>
 					<th scope="col">TotalPrice</th>
-					<th scope="col">DeliveryTime</th>
 					<th scope="col">Option</th>
 				</tr>
 			</thead>
@@ -74,7 +73,6 @@
 				double gstAmount = Float.parseFloat(request.getParameter("gstAmount"));
 				float totalAmount = Float.parseFloat(request.getParameter("totalPrice"));
 				String deliveryTime = request.getParameter("deliveryTime");
-
 				//String orderedDate = order.getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 				//String orderedTime = order.getTime().format(DateTimeFormatter.ofPattern("HH:mm"));
 				//String deliveryTime = deliveryTime.format(DateTimeFormatter.ofPattern("HH:mm"));
@@ -86,7 +84,6 @@
 					<td><%=price%></td>
 					<td><%=gstAmount%></td>
 					<td><%=totalAmount%></td>
-					<td><%=deliveryTime%></td>
 					<td><a
 						href="ConfirmOrderServlet?productName=<%=productName%>&quantity=<%=quantity%>&price=<%=price%>&gstAmount=<%=gstAmount%>&totalAmount=<%=totalAmount%>">
 							<button class="btn btn-primary">Confirm Order</button>

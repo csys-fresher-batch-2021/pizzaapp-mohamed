@@ -18,14 +18,14 @@ public class ProductService {
 	 * @param productprice1
 	 * @throws ServiceException
 	 */
-	public static void addProduct(int productId1, String productName, Float productprice1) throws ServiceException {
+	public static void addProduct(int productId, String productName, Float productPrice) throws ServiceException {
 
 		try {
 			AddProductsValidator.isValidProductName(productName);
-			AddProductsValidator.isValidProductPrice(productprice1);
-			AddProductsValidator.isValidProductId(productId1);
-			ExistsProductValidator.existsProduct(productId1, productName);
-			Product product = new Product(productId1, productName, productprice1);
+			AddProductsValidator.isValidProductPrice(productPrice);
+			AddProductsValidator.isValidProductId(productId);
+			ExistsProductValidator.existsProduct(productId, productName);
+			Product product = new Product(productId, productName, productPrice);
 			ProductDao.addProduct(product);
 		} catch (Exception e) {
 			e.printStackTrace();
