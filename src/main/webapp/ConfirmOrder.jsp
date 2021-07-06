@@ -13,7 +13,7 @@
 		<p class="text-center"><jsp:include page="Message.jsp"></jsp:include></p>
 			<h1 class="display-3">Thank You!</h1>
 			<p class="lead">
-				<a class="btn btn-primary btn-sm" href="Order.jsp" role="button">Continue
+				<a class="btn btn-primary btn-sm" href="ListProducts.jsp" role="button">Continue
 					to order</a>
 			</p>
 		</div>

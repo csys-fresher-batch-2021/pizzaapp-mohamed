@@ -11,6 +11,13 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid"></main>
+	<%
+	String errorMessage = request.getParameter("errorMessage");
+	if (errorMessage != null) {
+		out.println("<font color='red'>" + errorMessage + "</font>");
+	}
+	String productName = request.getParameter("productName");
+	%>
 	<div class="card bg-light">
 		<article class="card-body mx-auto" style="max-width: 400px;">
 			<h3 class="card-title mt-3 text-center">ORDER SHEET</h3>
@@ -22,11 +29,20 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text"> </span>
 					</div>
-					<input name="pizzaType" class="form-control"
-						placeholder="Enter pizzaname " autocomplete="off" type="text"
-						required>
+					<%
+					if (productName == null) {
+					%>
+					<input name="productName" placeholder=" productName" type="text"
+						required />
+					<%
+					} else {
+					%>
+					<input name="productName" value="<%=productName%>"
+						placeholder=" productName" type="text" readonly required />
+					<%
+					}
+					%>
 				</div>
-
 				<label>Quantity</label>
 				<div class="form-group input-group">
 					<div class="input-group-prepend">

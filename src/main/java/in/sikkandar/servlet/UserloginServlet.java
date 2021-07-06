@@ -39,7 +39,7 @@ public class UserloginServlet extends HttpServlet {
 			user.checkUser(userName, userPassCode);
 			HttpSession session = request.getSession();
 			session.setAttribute("LOGGED_IN_USER", userName);
-			response.sendRedirect("Order.jsp");
+			response.sendRedirect("ListProducts.jsp");
 
 		} catch (Exception e) {
 			e.printStackTrace();

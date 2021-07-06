@@ -29,7 +29,7 @@
 <%
 String loggedInUsername = (String) session.getAttribute("LOGGED_IN_USER");
 String loggedInAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
-%>userTable
+%>
 
 <header>
 	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -74,6 +74,8 @@ String loggedInAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
 				</li>
 				<li class="nav-item"><a class="nav-link" href="MyOrderServlet">My
 						Orders</a></li>
+						<li class="nav-item"><a class="nav-link" href="UserCartDetails">MyCart</a></li>
+						
 				<%
 				} else {
 				%>
