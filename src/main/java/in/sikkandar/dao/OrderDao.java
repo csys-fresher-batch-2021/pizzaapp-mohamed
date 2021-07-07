@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -90,9 +89,6 @@ public class OrderDao {
 				Time deliveryTime = result.getTime("deliveryTime");
 				Date deliveryDate= result.getDate("deliveryDate");
 				LocalDate orderDate = ((java.sql.Date) date).toLocalDate();
-				//LocalDate deliveryDate1=((java.sql.Date) deliveryDate).toLocalDate();
-				//LocalTime orderTime1 = orderTime.toLocalTime();
-				//LocalTime deliveryTime1 = deliveryTime.toLocalTime();
 				order.setDate(orderDate);
 				order.setTime( orderTime.toLocalTime());
 				order.setPizzaName(pizzaType);
@@ -151,20 +147,20 @@ public class OrderDao {
 				Time deliveryTime = result.getTime("deliverytime");
 				Date deliveryDate= result.getDate("deliveryDate");
 				LocalDate orderDate = ((java.sql.Date) date).toLocalDate();
-				LocalDate deliveryDate1=((java.sql.Date) deliveryDate).toLocalDate();
-				LocalTime orderTime1 = orderTime.toLocalTime();
-				LocalTime deliveryTime1 = deliveryTime.toLocalTime();
+				//LocalDate deliveryDate1=((java.sql.Date) deliveryDate).toLocalDate();
+				//LocalTime orderTime1 = orderTime.toLocalTime();
+				//LocalTime deliveryTime1 = deliveryTime.toLocalTime();
 				order.setUser(user);
 				order.setProduct(product);
 				order.setDate(orderDate);
-				order.setTime(orderTime1);
+				order.setTime( orderTime.toLocalTime());
 				order.setPizzaName(pizzaType);
 				order.setQuantity(quantity);
 				order.setPrice(price);
 				order.setTotalAmount(totalAmount);
 				order.setGstAmount(gstAmount);
-				order.setDeliveryTime(deliveryTime1);
-				order.setDeliveryDate(deliveryDate1);
+				order.setDeliveryTime(deliveryTime.toLocalTime());
+				order.setDeliveryDate(((java.sql.Date) deliveryDate).toLocalDate());
 				list.add(order);
 			}
 
@@ -214,20 +210,20 @@ public class OrderDao {
 				Time deliveryTime = result.getTime("deliverytime");
 				Date deliveryDate= result.getDate("deliveryDate");
 				LocalDate orderDate = ((java.sql.Date) date).toLocalDate();
-				LocalDate deliveryDate1=((java.sql.Date) deliveryDate).toLocalDate();
-				LocalTime orderTime1 = orderTime.toLocalTime();
-				LocalTime deliveryTime1 = deliveryTime.toLocalTime();
+				//LocalDate deliveryDate1=((java.sql.Date) deliveryDate).toLocalDate();
+				//LocalTime orderTime1 = orderTime.toLocalTime();
+				//LocalTime deliveryTime1 = deliveryTime.toLocalTime();
 				order.setUser(user);
 				order.setProduct(product);
 				order.setDate(orderDate);
-				order.setTime(orderTime1);
+				order.setTime( orderTime.toLocalTime());
 				order.setPizzaName(pizzaType);
 				order.setQuantity(quantity);
 				order.setPrice(price);
 				order.setTotalAmount(totalAmount);
 				order.setGstAmount(gstAmount);
-				order.setDeliveryTime(deliveryTime1);
-				order.setDeliveryDate(deliveryDate1);
+				order.setDeliveryTime(deliveryTime.toLocalTime());
+				order.setDeliveryDate(((java.sql.Date) deliveryDate).toLocalDate());
 				list.add(order);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
