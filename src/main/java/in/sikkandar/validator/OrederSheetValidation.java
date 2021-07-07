@@ -11,11 +11,11 @@ public class OrederSheetValidation {
 
 	}
 	
-	public static void noProduct(String pizzaType1) {
+	public static void noProduct(String pizzaType) {
 		boolean isValid=false;
 		List<Product> product = ProductDao.getProduct();
 			for (Product products : product) {
-				if (products.getName().equals(pizzaType1)) {
+				if (products.getName().equalsIgnoreCase(pizzaType)) {
 					isValid=true;
 					break;
 				}

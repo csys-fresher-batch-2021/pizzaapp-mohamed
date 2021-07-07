@@ -2,8 +2,10 @@
 	pageEncoding="ISO-8859-1"%>
 <%@page import="in.sikkandar.service.*"%>
 <%@page import="java.util.List"%>
+<%@page import="in.sikkandar.model.CartDetails"%>
+<%@page import="in.sikkandar.model.User"%>
 <%@page import="in.sikkandar.model.Product"%>
-<%@page import="in.sikkandar.dao.ProductDao"%>
+<%@page import="in.sikkandar.dao.CartDetailsDao"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,26 +50,14 @@
 		<h3>List Pizza Types</h3>
 		<p><jsp:include page="Message.jsp"></jsp:include></p>
 		<table class="table table-bordered" id="list">
-			<caption>Available PizzaTypes</caption>
+			<caption>CartDetails</caption>
 			<thead>
 				<tr>
 					<th scope="col">S.No</th>
-					<%
-					if (loggedInUsername == null) {
-					%>
-					<th scope="col">ID</th>
-					<%
-					}
-					%>
 					<th scope="col">Pizza Name</th>
 					<th scope="col">Price</th>
-					<%
-					if (loggedInUsername != null) {
-					%>
-					<th id="AddToCart">Cart</th>
-					<%
-					}
-					%>
+					<th scope="col">Buy</th>
+					<th scope="col">DeleteCart</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -75,34 +65,26 @@
 				<!--  %= Expression - variable value -->
 				<!--  Dynamic  -->
 				<%
-				List<Product> products = ProductDao.getProduct();
+				List<CartDetails> userCartList = (List<CartDetails>) request.getAttribute("CART_DETAILS");
 				//List<Product> products = ProductService.getProducts();
 				int i = 0;
-				for (Product product : products) {
+				for (CartDetails carts : userCartList) {
 					i++;
+					Product product = carts.getProduct();
 				%>
 				<tr>
 					<td><%=i%></td>
-					<%
-					if (loggedInUsername == null) {
-					%>
-					<td><%=product.getId()%></td>
-					<%
-					}
-					%>
 					<td><%=product.getName()%></td>
 					<td><%=product.getPrice()%></td>
-					<%
-					if (loggedInUsername != null) {
-					%>
+					<td><a href="Order.jsp?productName=<%=product.getName()%>"><button
+								class="btn-btn-primary">BUY NOW</button></a></td>
 					<td><a
-						href="CartDetails?userName=<%=loggedInUsername%>
-				&productId=<%=product.getId()%>"><button
-								class="btn-btn-primary">ADD TO CART</button></a></td>
+						href="DeleteCartServlet?productName=<%=product.getName()%>"><button
+								class="btn-btn-primary">REMOVE</button></a></td>
 					<%
 					}
-					}
 					%>
+
 				</tr>
 			</tbody>
 		</table>

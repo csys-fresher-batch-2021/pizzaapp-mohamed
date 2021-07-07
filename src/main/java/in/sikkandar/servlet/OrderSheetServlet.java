@@ -32,7 +32,7 @@ public class OrderSheetServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String pizzaType = request.getParameter("pizzaType");
+		String pizzaType = request.getParameter("productName");
 		int quantity = Integer.parseInt( request.getParameter("quantity"));
 		try {
 			
