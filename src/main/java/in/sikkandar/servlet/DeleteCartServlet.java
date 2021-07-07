@@ -25,13 +25,14 @@ public class DeleteCartServlet extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public DeleteCartServlet() {
-
+		super();
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String productName = request.getParameter("productName");

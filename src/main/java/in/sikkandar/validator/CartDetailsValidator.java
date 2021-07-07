@@ -9,6 +9,10 @@ import in.sikkandar.model.Product;
 import in.sikkandar.model.User;
 
 public class CartDetailsValidator {
+	private CartDetailsValidator() {
+		
+	}
+
 	public static void existsCart(int userid, int id) {
 		String userName = "";
 		String productName = "";

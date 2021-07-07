@@ -23,13 +23,14 @@ public class CartDetails extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public CartDetails() {
-
+		super();
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int userid = 0;

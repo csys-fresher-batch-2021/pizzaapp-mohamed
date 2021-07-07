@@ -7,6 +7,9 @@ import in.sikkandar.exception.ValidationException;
 import in.sikkandar.validator.CartDetailsValidator;
 
 public class CartDetailsService{
+	private CartDetailsService() {
+		
+	}
 	public static void addCart(int userid,int id) throws ServiceException {
 		try {
 			CartDetailsValidator.existsCart(userid,id);
